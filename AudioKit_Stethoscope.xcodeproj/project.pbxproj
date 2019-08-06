@@ -1,0 +1,605 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		16B9471D9C5507A45EFB80D7 /* Pods_AudioKit_StethoscopeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FE57A4983998679383F711 /* Pods_AudioKit_StethoscopeTests.framework */; };
+		30CC5644D21BD9AFB5B9CF12 /* Pods_AudioKit_Stethoscope.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7395B957FA487096551C08A9 /* Pods_AudioKit_Stethoscope.framework */; };
+		4AAC7A0222F8037300F4768D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A0122F8037300F4768D /* AppDelegate.swift */; };
+		4AAC7A0422F8037300F4768D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A0322F8037300F4768D /* ViewController.swift */; };
+		4AAC7A0722F8037300F4768D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AAC7A0522F8037300F4768D /* Main.storyboard */; };
+		4AAC7A0922F8037400F4768D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AAC7A0822F8037400F4768D /* Assets.xcassets */; };
+		4AAC7A0C22F8037400F4768D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AAC7A0A22F8037400F4768D /* LaunchScreen.storyboard */; };
+		4AAC7A1722F8037400F4768D /* AudioKit_StethoscopeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A1622F8037400F4768D /* AudioKit_StethoscopeTests.swift */; };
+		4AAC7A2322F810FB00F4768D /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A2222F810FB00F4768D /* AudioManager.swift */; };
+		4AAC7A2822F824BA00F4768D /* ChartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A2722F824BA00F4768D /* ChartBuilder.swift */; };
+		4AAC7A2B22F8541400F4768D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A2A22F8541400F4768D /* DataManager.swift */; };
+		4AAC7A2E22F85EE400F4768D /* CalculatesResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A2D22F85EE400F4768D /* CalculatesResults.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4AAC7A1322F8037400F4768D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4AAC79F622F8037300F4768D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4AAC79FD22F8037300F4768D;
+			remoteInfo = AudioKit_Stethoscope;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02FEDD439E33FC43CBA97CB0 /* Pods-AudioKit_StethoscopeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioKit_StethoscopeTests.release.xcconfig"; path = "Target Support Files/Pods-AudioKit_StethoscopeTests/Pods-AudioKit_StethoscopeTests.release.xcconfig"; sourceTree = "<group>"; };
+		032DFB7882A791746957471B /* Pods-AudioKit_Stethoscope.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioKit_Stethoscope.debug.xcconfig"; path = "Target Support Files/Pods-AudioKit_Stethoscope/Pods-AudioKit_Stethoscope.debug.xcconfig"; sourceTree = "<group>"; };
+		03CAF861A599BE2E87073B2C /* Pods-AudioKit_Stethoscope.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioKit_Stethoscope.release.xcconfig"; path = "Target Support Files/Pods-AudioKit_Stethoscope/Pods-AudioKit_Stethoscope.release.xcconfig"; sourceTree = "<group>"; };
+		4AAC79FE22F8037300F4768D /* AudioKit_Stethoscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioKit_Stethoscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AAC7A0122F8037300F4768D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4AAC7A0322F8037300F4768D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4AAC7A0622F8037300F4768D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4AAC7A0822F8037400F4768D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4AAC7A0B22F8037400F4768D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4AAC7A0D22F8037400F4768D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4AAC7A1222F8037400F4768D /* AudioKit_StethoscopeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudioKit_StethoscopeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AAC7A1622F8037400F4768D /* AudioKit_StethoscopeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioKit_StethoscopeTests.swift; sourceTree = "<group>"; };
+		4AAC7A1822F8037400F4768D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4AAC7A2222F810FB00F4768D /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		4AAC7A2722F824BA00F4768D /* ChartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBuilder.swift; sourceTree = "<group>"; };
+		4AAC7A2A22F8541400F4768D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		4AAC7A2D22F85EE400F4768D /* CalculatesResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatesResults.swift; sourceTree = "<group>"; };
+		7395B957FA487096551C08A9 /* Pods_AudioKit_Stethoscope.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioKit_Stethoscope.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99FE57A4983998679383F711 /* Pods_AudioKit_StethoscopeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioKit_StethoscopeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BB36AD6E4AB45B95A5D7E94 /* Pods-AudioKit_StethoscopeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioKit_StethoscopeTests.debug.xcconfig"; path = "Target Support Files/Pods-AudioKit_StethoscopeTests/Pods-AudioKit_StethoscopeTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4AAC79FB22F8037300F4768D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30CC5644D21BD9AFB5B9CF12 /* Pods_AudioKit_Stethoscope.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AAC7A0F22F8037400F4768D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16B9471D9C5507A45EFB80D7 /* Pods_AudioKit_StethoscopeTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4AAC79F522F8037300F4768D = {
+			isa = PBXGroup;
+			children = (
+				4AAC7A2922F8540500F4768D /* Managers */,
+				4AAC7A2622F824A400F4768D /* Charts */,
+				4AAC7A0022F8037300F4768D /* AudioKit_Stethoscope */,
+				4AAC7A1522F8037400F4768D /* AudioKit_StethoscopeTests */,
+				4AAC79FF22F8037300F4768D /* Products */,
+				793B8D84CE791EC53E9923E5 /* Pods */,
+				A30A6AAAF095DC512F0D57EA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4AAC79FF22F8037300F4768D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4AAC79FE22F8037300F4768D /* AudioKit_Stethoscope.app */,
+				4AAC7A1222F8037400F4768D /* AudioKit_StethoscopeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4AAC7A0022F8037300F4768D /* AudioKit_Stethoscope */ = {
+			isa = PBXGroup;
+			children = (
+				4AAC7A0122F8037300F4768D /* AppDelegate.swift */,
+				4AAC7A0322F8037300F4768D /* ViewController.swift */,
+				4AAC7A0522F8037300F4768D /* Main.storyboard */,
+				4AAC7A0822F8037400F4768D /* Assets.xcassets */,
+				4AAC7A0A22F8037400F4768D /* LaunchScreen.storyboard */,
+				4AAC7A0D22F8037400F4768D /* Info.plist */,
+			);
+			path = AudioKit_Stethoscope;
+			sourceTree = "<group>";
+		};
+		4AAC7A1522F8037400F4768D /* AudioKit_StethoscopeTests */ = {
+			isa = PBXGroup;
+			children = (
+				4AAC7A1622F8037400F4768D /* AudioKit_StethoscopeTests.swift */,
+				4AAC7A1822F8037400F4768D /* Info.plist */,
+			);
+			path = AudioKit_StethoscopeTests;
+			sourceTree = "<group>";
+		};
+		4AAC7A2622F824A400F4768D /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				4AAC7A2722F824BA00F4768D /* ChartBuilder.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		4AAC7A2922F8540500F4768D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4AAC7A2A22F8541400F4768D /* DataManager.swift */,
+				4AAC7A2222F810FB00F4768D /* AudioManager.swift */,
+				4AAC7A2D22F85EE400F4768D /* CalculatesResults.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		793B8D84CE791EC53E9923E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				032DFB7882A791746957471B /* Pods-AudioKit_Stethoscope.debug.xcconfig */,
+				03CAF861A599BE2E87073B2C /* Pods-AudioKit_Stethoscope.release.xcconfig */,
+				9BB36AD6E4AB45B95A5D7E94 /* Pods-AudioKit_StethoscopeTests.debug.xcconfig */,
+				02FEDD439E33FC43CBA97CB0 /* Pods-AudioKit_StethoscopeTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A30A6AAAF095DC512F0D57EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7395B957FA487096551C08A9 /* Pods_AudioKit_Stethoscope.framework */,
+				99FE57A4983998679383F711 /* Pods_AudioKit_StethoscopeTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4AAC79FD22F8037300F4768D /* AudioKit_Stethoscope */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4AAC7A1B22F8037400F4768D /* Build configuration list for PBXNativeTarget "AudioKit_Stethoscope" */;
+			buildPhases = (
+				0287B94815C310C0B450D0CC /* [CP] Check Pods Manifest.lock */,
+				4AAC79FA22F8037300F4768D /* Sources */,
+				4AAC79FB22F8037300F4768D /* Frameworks */,
+				4AAC79FC22F8037300F4768D /* Resources */,
+				EC93733330288B5D14DFC0C4 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AudioKit_Stethoscope;
+			productName = AudioKit_Stethoscope;
+			productReference = 4AAC79FE22F8037300F4768D /* AudioKit_Stethoscope.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4AAC7A1122F8037400F4768D /* AudioKit_StethoscopeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4AAC7A1E22F8037400F4768D /* Build configuration list for PBXNativeTarget "AudioKit_StethoscopeTests" */;
+			buildPhases = (
+				010FF61C46442A00E0E48F03 /* [CP] Check Pods Manifest.lock */,
+				4AAC7A0E22F8037400F4768D /* Sources */,
+				4AAC7A0F22F8037400F4768D /* Frameworks */,
+				4AAC7A1022F8037400F4768D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4AAC7A1422F8037400F4768D /* PBXTargetDependency */,
+			);
+			name = AudioKit_StethoscopeTests;
+			productName = AudioKit_StethoscopeTests;
+			productReference = 4AAC7A1222F8037400F4768D /* AudioKit_StethoscopeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4AAC79F622F8037300F4768D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Usman Nazir";
+				TargetAttributes = {
+					4AAC79FD22F8037300F4768D = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					4AAC7A1122F8037400F4768D = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 4AAC79FD22F8037300F4768D;
+					};
+				};
+			};
+			buildConfigurationList = 4AAC79F922F8037300F4768D /* Build configuration list for PBXProject "AudioKit_Stethoscope" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4AAC79F522F8037300F4768D;
+			productRefGroup = 4AAC79FF22F8037300F4768D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4AAC79FD22F8037300F4768D /* AudioKit_Stethoscope */,
+				4AAC7A1122F8037400F4768D /* AudioKit_StethoscopeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4AAC79FC22F8037300F4768D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AAC7A0C22F8037400F4768D /* LaunchScreen.storyboard in Resources */,
+				4AAC7A0922F8037400F4768D /* Assets.xcassets in Resources */,
+				4AAC7A0722F8037300F4768D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AAC7A1022F8037400F4768D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		010FF61C46442A00E0E48F03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AudioKit_StethoscopeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0287B94815C310C0B450D0CC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AudioKit_Stethoscope-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC93733330288B5D14DFC0C4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AudioKit_Stethoscope/Pods-AudioKit_Stethoscope-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AudioKit_Stethoscope/Pods-AudioKit_Stethoscope-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudioKit_Stethoscope/Pods-AudioKit_Stethoscope-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4AAC79FA22F8037300F4768D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AAC7A0422F8037300F4768D /* ViewController.swift in Sources */,
+				4AAC7A2B22F8541400F4768D /* DataManager.swift in Sources */,
+				4AAC7A2E22F85EE400F4768D /* CalculatesResults.swift in Sources */,
+				4AAC7A2322F810FB00F4768D /* AudioManager.swift in Sources */,
+				4AAC7A2822F824BA00F4768D /* ChartBuilder.swift in Sources */,
+				4AAC7A0222F8037300F4768D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AAC7A0E22F8037400F4768D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AAC7A1722F8037400F4768D /* AudioKit_StethoscopeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4AAC7A1422F8037400F4768D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4AAC79FD22F8037300F4768D /* AudioKit_Stethoscope */;
+			targetProxy = 4AAC7A1322F8037400F4768D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4AAC7A0522F8037300F4768D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4AAC7A0622F8037300F4768D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4AAC7A0A22F8037400F4768D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4AAC7A0B22F8037400F4768D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4AAC7A1922F8037400F4768D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4AAC7A1A22F8037400F4768D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4AAC7A1C22F8037400F4768D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 032DFB7882A791746957471B /* Pods-AudioKit_Stethoscope.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 524G574595;
+				INFOPLIST_FILE = AudioKit_Stethoscope/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.AV-AudioEngine-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4AAC7A1D22F8037400F4768D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03CAF861A599BE2E87073B2C /* Pods-AudioKit_Stethoscope.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 524G574595;
+				INFOPLIST_FILE = AudioKit_Stethoscope/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.AV-AudioEngine-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4AAC7A1F22F8037400F4768D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BB36AD6E4AB45B95A5D7E94 /* Pods-AudioKit_StethoscopeTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 524G574595;
+				INFOPLIST_FILE = AudioKit_StethoscopeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.AudioKit-StethoscopeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AudioKit_Stethoscope.app/AudioKit_Stethoscope";
+			};
+			name = Debug;
+		};
+		4AAC7A2022F8037400F4768D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02FEDD439E33FC43CBA97CB0 /* Pods-AudioKit_StethoscopeTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 524G574595;
+				INFOPLIST_FILE = AudioKit_StethoscopeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.AudioKit-StethoscopeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AudioKit_Stethoscope.app/AudioKit_Stethoscope";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4AAC79F922F8037300F4768D /* Build configuration list for PBXProject "AudioKit_Stethoscope" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AAC7A1922F8037400F4768D /* Debug */,
+				4AAC7A1A22F8037400F4768D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4AAC7A1B22F8037400F4768D /* Build configuration list for PBXNativeTarget "AudioKit_Stethoscope" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AAC7A1C22F8037400F4768D /* Debug */,
+				4AAC7A1D22F8037400F4768D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4AAC7A1E22F8037400F4768D /* Build configuration list for PBXNativeTarget "AudioKit_StethoscopeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AAC7A1F22F8037400F4768D /* Debug */,
+				4AAC7A2022F8037400F4768D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4AAC79F622F8037300F4768D /* Project object */;
+}
