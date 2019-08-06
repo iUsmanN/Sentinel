@@ -16,11 +16,11 @@ extension CalculatesResults {
     func getPeaks() -> Int {
         
         //Count to store number of peaks
-        var count = 0
+        var count       = 0
         
         //Local variables to temporarily store values
-        let micInputs = DataManager.sharedInstance.getMicOutputs()
-        let avgInputs = DataManager.sharedInstance.getDynamicAverage()
+        let micInputs   = DataManager.sharedInstance.getMicOutputs()
+        let avgInputs   = DataManager.sharedInstance.getDynamicAverage()
         
         //Loop to traverse though the inputs
         for i in 1..<micInputs.count-2 {

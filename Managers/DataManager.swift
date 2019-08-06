@@ -11,13 +11,13 @@ import Foundation
 class DataManager {
     
     //Singleton instance
-    static let sharedInstance = DataManager()
+    static let sharedInstance       = DataManager()
     
     //Stores microphone amplitude data
     var microphoneOutput : [Double] = [Double]()
     
     //Stores average of amplitude data overtime
-    var dynamicAverage : [Double] = [Double]()
+    var dynamicAverage : [Double]   = [Double]()
     
     //Sets microphone inputs
     func setMicOutputs(input: [Double]) {

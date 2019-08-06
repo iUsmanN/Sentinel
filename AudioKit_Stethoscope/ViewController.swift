@@ -12,15 +12,15 @@ import Charts
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var amplitude: UILabel!
-    @IBOutlet weak var lineChart: LineChartView!
-    @IBOutlet weak var averageLabel: UILabel!
+    @IBOutlet weak var amplitude    : UILabel!
+    @IBOutlet weak var lineChart    : LineChartView!
+    @IBOutlet weak var averageLabel : UILabel!
     
     //Array to store amplitudes
-    var arr = [Double]()
+    var arr                         = [Double]()
     
     //Obj to build chart
-    var chart : ChartBuilder?
+    var chart                       : ChartBuilder?
     
     
     override func viewDidLoad() {

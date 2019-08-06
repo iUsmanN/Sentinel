@@ -5,26 +5,26 @@ import AudioKitUI
 class AudioManager {
     
     // Singleton of the Conductor class to avoid multiple instances of the audio engine
-    static let sharedInstance = AudioManager()
+    static let sharedInstance   = AudioManager()
     
     // Create instance variables
-    var mic: AKMicrophone!
-    var tracker: AKAmplitudeTracker!
-    var boost: AKBooster!
+    var mic                     : AKMicrophone!
+    var tracker                 : AKAmplitudeTracker!
+    var boost                   : AKBooster!
     
     //Array to store amplitudes
-    var arr = [Double]()
-    var arr2 = [Double]()
+    var averageArray            = [Double]()
+    var micDataArray            = [Double]()
     
     //Amplification
-    var ampFactor = 6
+    var ampFactor               = 6
     
     //Average
-    var sum : Double = 0
+    var sum : Double            = 0
     
     //Closure to pass Arr
-    var updateChart : (() -> ())!
-    var showResults : (() -> ())!
+    var updateChart             : (() -> ())!
+    var showResults             : (() -> ())!
     
     private init() {
 
@@ -47,10 +47,10 @@ class AudioManager {
             //self.arr.append(self.tracker.amplitude)
             
             //Save amplified data to array2
-            self.arr2.append(self.tracker.amplitude * self.ampFactor)
+            self.micDataArray.append(self.tracker.amplitude * self.ampFactor)
             
             //Save current average in array
-            self.arr.append(self.getAverage(input: (self.getAverage(input: self.tracker.amplitude * self.ampFactor))))
+            self.averageArray.append(self.getAverage(input: (self.getAverage(input: self.tracker.amplitude * self.ampFactor))))
         }
         
         //Stop Recording after 20s
@@ -58,8 +58,8 @@ class AudioManager {
             self.stopAudioEngine()
             
             //Save Data in Data Manager
-            DataManager.sharedInstance.setMicOutputs(input: self.arr2)
-            DataManager.sharedInstance.setDynamicAvgs(input: self.arr)
+            DataManager.sharedInstance.setMicOutputs(input: self.micDataArray)
+            DataManager.sharedInstance.setDynamicAvgs(input: self.averageArray)
             
             //Update chart
             self.updateChart()
@@ -92,9 +92,9 @@ class AudioManager {
     @discardableResult
     func getAverage(input: Double) -> Double {
         var sum: Double = 0
-        for i in arr2 {
+        for i in micDataArray {
             sum += i
         }
-        return sum/arr2.count
+        return sum/micDataArray.count
     }
 }

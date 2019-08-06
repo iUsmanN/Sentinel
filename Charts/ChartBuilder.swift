@@ -13,11 +13,11 @@ import UIKit
 class ChartBuilder {
     
     //Line chart view
-    var view : LineChartView!
+    var view                : LineChartView!
     
     //Stores chart data entry values
-    var averagesArray = [ChartDataEntry]()
-    var MicrophoneArray = [ChartDataEntry]()
+    var averagesArray       = [ChartDataEntry]()
+    var MicrophoneArray     = [ChartDataEntry]()
     
     //Initializes class with chart view
     init(inputView: LineChartView) {
@@ -36,7 +36,7 @@ class ChartBuilder {
             MicrophoneArray.append(ChartDataEntry(x: Double(x), y: i))
             
             //increase x-axis value
-            x+=1
+            x += 1
         }
         
         //Reset graph x scale
@@ -49,7 +49,7 @@ class ChartBuilder {
             averagesArray.append(ChartDataEntry(x: Double(x), y: i))
             
             //increase x-axis value
-            x+=1
+            x += 1
         }
         
         //Draw chart
