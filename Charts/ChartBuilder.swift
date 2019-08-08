@@ -60,14 +60,14 @@ class ChartBuilder {
     func drawChart() {
         
         //Prepare data set 1
-        let linedataset = LineChartDataSet(entries: averagesArray, label: nil)
+        let linedataset = LineChartDataSet(entries: averagesArray, label: "Threshold")
         linedataset.circleHoleColor = .clear
         linedataset.setColor(.white)
         linedataset.circleRadius = 0
         
         
         //Prepare dataset 2
-        let linedataset2 = LineChartDataSet(entries: MicrophoneArray, label: nil)
+        let linedataset2 = LineChartDataSet(entries: MicrophoneArray, label: "Amplitude")
         linedataset2.circleHoleColor = .clear
         linedataset2.setColor(.red)
         linedataset2.circleRadius = 0

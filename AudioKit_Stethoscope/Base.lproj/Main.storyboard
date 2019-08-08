@@ -29,10 +29,10 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0RT-9p-kBq" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="144" width="414" height="718"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0RT-9p-kBq" firstAttribute="top" secondItem="OIP-4y-tna" secondAttribute="bottom" id="0jF-sa-Iya"/>
                             <constraint firstItem="0RT-9p-kBq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5nj-Wm-lac"/>
