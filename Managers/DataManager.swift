@@ -19,6 +19,12 @@ class DataManager {
     //Stores average of amplitude data overtime
     var dynamicAverage : [Double]   = [Double]()
     
+    //Stores Frequency Intervals
+    var frequencyIntervals : [Double] = [Double]()
+    
+    //Stores dB Values
+    var dbValues : [Double] = [Double]()
+    
     //Sets microphone inputs
     func setMicOutputs(input: [Double]) {
         microphoneOutput = input
@@ -29,6 +35,16 @@ class DataManager {
         dynamicAverage = input
     }
     
+    //Sets frequency intervals
+    func setFrequencyIntervals(input: [Double]) {
+        frequencyIntervals = input
+    }
+    
+    //Sets dB data
+    func setDbData(input: [Double]) {
+        dbValues = input
+    }
+    
     //Gets microphone data
     func getMicOutputs() -> [Double] {
         return microphoneOutput
@@ -37,5 +53,15 @@ class DataManager {
     //Gets average data
     func getDynamicAverage() -> [Double] {
         return dynamicAverage
+    }
+    
+    //Gets frequency intervals
+    func getFrequencyIntervals() -> [Double] {
+        return frequencyIntervals
+    }
+    
+    //Gets dB data
+    func getDbData() -> [Double] {
+        return dbValues
     }
 }

@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		16B9471D9C5507A45EFB80D7 /* Pods_AudioKit_StethoscopeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FE57A4983998679383F711 /* Pods_AudioKit_StethoscopeTests.framework */; };
 		30CC5644D21BD9AFB5B9CF12 /* Pods_AudioKit_Stethoscope.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7395B957FA487096551C08A9 /* Pods_AudioKit_Stethoscope.framework */; };
+		4A11401C230538B300A2E45D /* callas8.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4A11401B230538B300A2E45D /* callas8.wav */; };
+		4A11401E23053C1900A2E45D /* f1K.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4A11401D23053C1900A2E45D /* f1K.wav */; };
+		4A114052230544FF00A2E45D /* FFTChartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A114051230544FF00A2E45D /* FFTChartBuilder.swift */; };
+		4A11405423055A7E00A2E45D /* callas2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4A11405323055A7E00A2E45D /* callas2.wav */; };
+		4A11405623055B7900A2E45D /* f2K.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A11405523055B7800A2E45D /* f2K.mp3 */; };
+		4A1140592305620000A2E45D /* f10K.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A1140582305620000A2E45D /* f10K.mp3 */; };
+		4A11405B2305631600A2E45D /* f0.1K.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A11405A2305631600A2E45D /* f0.1K.mp3 */; };
+		4A11405D230577A600A2E45D /* frequencies.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A11405C230577A500A2E45D /* frequencies.mp3 */; };
+		4A11405F230578FC00A2E45D /* frequencies2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A11405E230578FC00A2E45D /* frequencies2.mp3 */; };
 		4AAC7A0222F8037300F4768D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A0122F8037300F4768D /* AppDelegate.swift */; };
 		4AAC7A0422F8037300F4768D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A0322F8037300F4768D /* ViewController.swift */; };
 		4AAC7A0722F8037300F4768D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AAC7A0522F8037300F4768D /* Main.storyboard */; };
@@ -16,9 +25,10 @@
 		4AAC7A0C22F8037400F4768D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AAC7A0A22F8037400F4768D /* LaunchScreen.storyboard */; };
 		4AAC7A1722F8037400F4768D /* AudioKit_StethoscopeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A1622F8037400F4768D /* AudioKit_StethoscopeTests.swift */; };
 		4AAC7A2322F810FB00F4768D /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A2222F810FB00F4768D /* AudioManager.swift */; };
-		4AAC7A2822F824BA00F4768D /* ChartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A2722F824BA00F4768D /* ChartBuilder.swift */; };
+		4AAC7A2822F824BA00F4768D /* AmplitudeChartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A2722F824BA00F4768D /* AmplitudeChartBuilder.swift */; };
 		4AAC7A2B22F8541400F4768D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A2A22F8541400F4768D /* DataManager.swift */; };
 		4AAC7A2E22F85EE400F4768D /* CalculatesResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A2D22F85EE400F4768D /* CalculatesResults.swift */; };
+		4AEE796022FDDCAD00B080BA /* FFTBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE795F22FDDCAD00B080BA /* FFTBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +45,15 @@
 		02FEDD439E33FC43CBA97CB0 /* Pods-AudioKit_StethoscopeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioKit_StethoscopeTests.release.xcconfig"; path = "Target Support Files/Pods-AudioKit_StethoscopeTests/Pods-AudioKit_StethoscopeTests.release.xcconfig"; sourceTree = "<group>"; };
 		032DFB7882A791746957471B /* Pods-AudioKit_Stethoscope.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioKit_Stethoscope.debug.xcconfig"; path = "Target Support Files/Pods-AudioKit_Stethoscope/Pods-AudioKit_Stethoscope.debug.xcconfig"; sourceTree = "<group>"; };
 		03CAF861A599BE2E87073B2C /* Pods-AudioKit_Stethoscope.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioKit_Stethoscope.release.xcconfig"; path = "Target Support Files/Pods-AudioKit_Stethoscope/Pods-AudioKit_Stethoscope.release.xcconfig"; sourceTree = "<group>"; };
+		4A11401B230538B300A2E45D /* callas8.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = callas8.wav; sourceTree = "<group>"; };
+		4A11401D23053C1900A2E45D /* f1K.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = f1K.wav; sourceTree = "<group>"; };
+		4A114051230544FF00A2E45D /* FFTChartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFTChartBuilder.swift; sourceTree = "<group>"; };
+		4A11405323055A7E00A2E45D /* callas2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = callas2.wav; sourceTree = "<group>"; };
+		4A11405523055B7800A2E45D /* f2K.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = f2K.mp3; sourceTree = "<group>"; };
+		4A1140582305620000A2E45D /* f10K.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = f10K.mp3; sourceTree = "<group>"; };
+		4A11405A2305631600A2E45D /* f0.1K.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = f0.1K.mp3; sourceTree = "<group>"; };
+		4A11405C230577A500A2E45D /* frequencies.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frequencies.mp3; sourceTree = "<group>"; };
+		4A11405E230578FC00A2E45D /* frequencies2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frequencies2.mp3; sourceTree = "<group>"; };
 		4AAC79FE22F8037300F4768D /* AudioKit_Stethoscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioKit_Stethoscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AAC7A0122F8037300F4768D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AAC7A0322F8037300F4768D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,9 +65,10 @@
 		4AAC7A1622F8037400F4768D /* AudioKit_StethoscopeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioKit_StethoscopeTests.swift; sourceTree = "<group>"; };
 		4AAC7A1822F8037400F4768D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AAC7A2222F810FB00F4768D /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
-		4AAC7A2722F824BA00F4768D /* ChartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBuilder.swift; sourceTree = "<group>"; };
+		4AAC7A2722F824BA00F4768D /* AmplitudeChartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplitudeChartBuilder.swift; sourceTree = "<group>"; };
 		4AAC7A2A22F8541400F4768D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		4AAC7A2D22F85EE400F4768D /* CalculatesResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatesResults.swift; sourceTree = "<group>"; };
+		4AEE795F22FDDCAD00B080BA /* FFTBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFTBuilder.swift; sourceTree = "<group>"; };
 		7395B957FA487096551C08A9 /* Pods_AudioKit_Stethoscope.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioKit_Stethoscope.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FE57A4983998679383F711 /* Pods_AudioKit_StethoscopeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioKit_StethoscopeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB36AD6E4AB45B95A5D7E94 /* Pods-AudioKit_StethoscopeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioKit_StethoscopeTests.debug.xcconfig"; path = "Target Support Files/Pods-AudioKit_StethoscopeTests/Pods-AudioKit_StethoscopeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +119,14 @@
 		4AAC7A0022F8037300F4768D /* AudioKit_Stethoscope */ = {
 			isa = PBXGroup;
 			children = (
+				4A11405E230578FC00A2E45D /* frequencies2.mp3 */,
+				4A11405C230577A500A2E45D /* frequencies.mp3 */,
+				4A11405A2305631600A2E45D /* f0.1K.mp3 */,
+				4A1140582305620000A2E45D /* f10K.mp3 */,
+				4A11405523055B7800A2E45D /* f2K.mp3 */,
+				4A11405323055A7E00A2E45D /* callas2.wav */,
+				4A11401D23053C1900A2E45D /* f1K.wav */,
+				4A11401B230538B300A2E45D /* callas8.wav */,
 				4AAC7A0122F8037300F4768D /* AppDelegate.swift */,
 				4AAC7A0322F8037300F4768D /* ViewController.swift */,
 				4AAC7A0522F8037300F4768D /* Main.storyboard */,
@@ -121,7 +149,9 @@
 		4AAC7A2622F824A400F4768D /* Charts */ = {
 			isa = PBXGroup;
 			children = (
-				4AAC7A2722F824BA00F4768D /* ChartBuilder.swift */,
+				4AAC7A2722F824BA00F4768D /* AmplitudeChartBuilder.swift */,
+				4AEE795F22FDDCAD00B080BA /* FFTBuilder.swift */,
+				4A114051230544FF00A2E45D /* FFTChartBuilder.swift */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -240,9 +270,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A11405F230578FC00A2E45D /* frequencies2.mp3 in Resources */,
+				4A1140592305620000A2E45D /* f10K.mp3 in Resources */,
 				4AAC7A0C22F8037400F4768D /* LaunchScreen.storyboard in Resources */,
 				4AAC7A0922F8037400F4768D /* Assets.xcassets in Resources */,
+				4A11405423055A7E00A2E45D /* callas2.wav in Resources */,
+				4A11405623055B7900A2E45D /* f2K.mp3 in Resources */,
 				4AAC7A0722F8037300F4768D /* Main.storyboard in Resources */,
+				4A11401E23053C1900A2E45D /* f1K.wav in Resources */,
+				4A11401C230538B300A2E45D /* callas8.wav in Resources */,
+				4A11405B2305631600A2E45D /* f0.1K.mp3 in Resources */,
+				4A11405D230577A600A2E45D /* frequencies.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,11 +362,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AEE796022FDDCAD00B080BA /* FFTBuilder.swift in Sources */,
+				4A114052230544FF00A2E45D /* FFTChartBuilder.swift in Sources */,
 				4AAC7A0422F8037300F4768D /* ViewController.swift in Sources */,
 				4AAC7A2B22F8541400F4768D /* DataManager.swift in Sources */,
 				4AAC7A2E22F85EE400F4768D /* CalculatesResults.swift in Sources */,
 				4AAC7A2322F810FB00F4768D /* AudioManager.swift in Sources */,
-				4AAC7A2822F824BA00F4768D /* ChartBuilder.swift in Sources */,
+				4AAC7A2822F824BA00F4768D /* AmplitudeChartBuilder.swift in Sources */,
 				4AAC7A0222F8037300F4768D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

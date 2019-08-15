@@ -8,30 +8,35 @@
 
 import UIKit
 import AudioKit
+import AudioKitUI
 import Charts
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, FFTBuilder {
+    
     @IBOutlet weak var amplitude    : UILabel!
     @IBOutlet weak var lineChart    : LineChartView!
     @IBOutlet weak var averageLabel : UILabel!
+    @IBOutlet var fftplot           : LineChartView!
     
     //Array to store amplitudes
     var arr                         = [Double]()
     
     //Obj to build chart
-    var chart                       : ChartBuilder?
+    var chart                       : AmplitudeChartBuilder?
+    var fft                         : FFTChartBuilder?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Sets the line chart variable
-        chart = ChartBuilder(inputView: lineChart)
+        chart = AmplitudeChartBuilder(inputView: lineChart)
+        fft   = FFTChartBuilder(inputView: fftplot)
         
-        //Set closure
-        if let chart = chart {
-            AudioManager.sharedInstance.setReturnClosure(closure2: chart.fetchData, closure: showResults)
+        if let fft = fft, let chart = chart {
+            
+            //Connect to AudioManager
+            AudioManager.sharedInstance.setReturnClosure(chartUpdateClosureFFT: fft.fetchData, chartUpdateClosureAMPL: chart.fetchData, resultsShowingClosureAMPL: showResults)
         }
     }
 }
@@ -41,7 +46,7 @@ extension ViewController : CalculatesResults {
     
     //Show results on screen
     func showResults() {
-        self.amplitude.text = "BPM : \(getBPM())"
+        //self.amplitude.text = "BPM : \(getBPM())"
         self.amplitude.textAlignment = .center
     }
 }

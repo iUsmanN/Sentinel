@@ -18,36 +18,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold for 15s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIP-4y-tna">
-                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="2" translatesAutoresizingMaskIntoConstraints="NO" id="OIP-4y-tna">
+                                <rect key="frame" x="0.0" y="44" width="414" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="3UY-WN-zaL"/>
+                                    <constraint firstAttribute="height" constant="20" id="3UY-WN-zaL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0RT-9p-kBq" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="825.5" width="414" height="36.5"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjB-kW-myh" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="64" width="414" height="761.5"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="0RT-9p-kBq" firstAttribute="top" secondItem="OIP-4y-tna" secondAttribute="bottom" id="0jF-sa-Iya"/>
+                            <constraint firstItem="zjB-kW-myh" firstAttribute="top" secondItem="OIP-4y-tna" secondAttribute="bottom" id="1ia-ii-FfO"/>
                             <constraint firstItem="0RT-9p-kBq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5nj-Wm-lac"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OIP-4y-tna" secondAttribute="trailing" id="6a1-6v-gDd"/>
                             <constraint firstItem="OIP-4y-tna" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LMm-hb-Buw"/>
+                            <constraint firstItem="zjB-kW-myh" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.85" id="P7K-d7-u8o"/>
+                            <constraint firstItem="0RT-9p-kBq" firstAttribute="top" secondItem="zjB-kW-myh" secondAttribute="bottom" id="a2V-rR-HvE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zjB-kW-myh" secondAttribute="trailing" id="abB-a5-Y0Y"/>
                             <constraint firstItem="OIP-4y-tna" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cvd-W0-RjZ"/>
-                            <constraint firstItem="0RT-9p-kBq" firstAttribute="top" secondItem="OIP-4y-tna" secondAttribute="bottom" id="dcX-e3-23n"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0RT-9p-kBq" secondAttribute="bottom" id="hv3-Oq-1p8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0RT-9p-kBq" secondAttribute="trailing" id="kG1-vH-UrC"/>
                             <constraint firstItem="OIP-4y-tna" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nF7-Rh-QW9"/>
+                            <constraint firstItem="zjB-kW-myh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="syb-7i-XU0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="amplitude" destination="OIP-4y-tna" id="OFH-dl-6Ad"/>
+                        <outlet property="fftplot" destination="zjB-kW-myh" id="PKe-qi-93X"/>
                         <outlet property="lineChart" destination="0RT-9p-kBq" id="LGI-qA-qMq"/>
                     </connections>
                 </viewController>
