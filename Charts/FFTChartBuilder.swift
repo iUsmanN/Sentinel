@@ -12,6 +12,9 @@ import UIKit
 
 class FFTChartBuilder {
     
+    //Number of Bins to Show
+    var bins                = 500
+    
     //Line chart view
     var view                : LineChartView!
     
@@ -30,7 +33,7 @@ class FFTChartBuilder {
         dB_Array = [ChartDataEntry]()
         
         //Fill Data entries
-        for i in 0 ..< DataManager.sharedInstance.getFrequencyIntervals().count {
+        for i in 0 ..< bins /*DataManager.sharedInstance.getFrequencyIntervals().count*/ {
             
             dB_Array.append(ChartDataEntry(x: DataManager.sharedInstance.frequencyIntervals[i], y: DataManager.sharedInstance.dbValues[i]))
             

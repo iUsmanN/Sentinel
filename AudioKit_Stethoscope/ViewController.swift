@@ -11,7 +11,7 @@ import AudioKit
 import AudioKitUI
 import Charts
 
-class ViewController: UIViewController, FFTBuilder {
+class ViewController: UIViewController {
     
     @IBOutlet weak var amplitude    : UILabel!
     @IBOutlet weak var lineChart    : LineChartView!

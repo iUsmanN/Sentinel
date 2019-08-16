@@ -53,8 +53,8 @@ class AudioManager {
         AudioManager.mic            = AKMicrophone()
         
         //TEST Player
-        let file                    = try? AKAudioFile(readFileName: "frequencies2.mp3")
-        player                      = try! AKPlayer(audioFile: file!)
+        let file                    = try? AKAudioFile(readFileName: "frequencies3.mp3")
+        player                      = try? AKPlayer(audioFile: file!)
         
         //Initial signal Amplification
         boost = AKBooster(AudioManager.mic, gain: 2)
@@ -74,13 +74,13 @@ class AudioManager {
         //Deamplifying the high frequency sound for further clarity (giving the positively amplified output as input)
         equalizerNegative           = AKEqualizerFilter(equalizerPositive, centerFrequency: 10210, bandwidth: 9790, gain: -4)
         
+        // Pull Amplified output into the tracker node.
+        AudioManager.tracker        = AKFrequencyTracker(equalizerNegative)//player)
+        
         //SETUP MAIN INPUT NODE
         //-> Set this to     "equalizerNegative"    to get input from Microphone
         //-> Set this to           "player"         to get input from player. Also call self.player.play() after starting AudioEngine
-        mainInputNode = player
-        
-        // Pull Amplified output into the tracker node.
-        AudioManager.tracker        = AKFrequencyTracker(AudioManager.mic)//player)
+        mainInputNode = equalizerNegative
         
         //Taps the fft information
         FFT                         = AKFFTTap(mainInputNode)//player)//equalizerNegative)
@@ -90,14 +90,14 @@ class AudioManager {
         // Assign the output to be the final audio output
         AudioKit.output             = mainInputNode//AudioManager.mic//player//AudioManager.tracker
         
-        //Start Engine After 2s
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+        //Start Engine After 1s
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
             
             //Start Audio Engine
             self.startAudioEngine()
             self.lowpass.start()
             self.bandPass.start()
-            self.player.play()
+            //self.player.play()
             AudioManager.tracker.start()
             
             //Capture Values every 0.1s
@@ -126,7 +126,7 @@ class AudioManager {
             })
             
             //Stop Recording after 15s
-            Timer.scheduledTimer(withTimeInterval: 100, repeats: false) { timer in
+            Timer.scheduledTimer(withTimeInterval: 150, repeats: false) { timer in
                 self.stopAudioEngine()
                 
                 //Save Data in Data Manager
@@ -143,7 +143,7 @@ class AudioManager {
     }
     
     //Update: WORKS
-    //Converts raw FFT Data to frequency and amplitudes according to :
+    //Converts raw FFT Data to frequency and amplitudes based upon :
     // https://stackoverflow.com/questions/52687711/trying-to-understand-the-output-of-akffttap-in-audiokit
     func processFFTData(fftTapNode: AKFFTTap){
         
@@ -160,7 +160,7 @@ class AudioManager {
             
             print("Frequency: \(frequency), Amplitude: \(amplitude)")
             frequencyArray.append(frequency)
-            dBArray.append(amplitude + 200)
+            dBArray.append(amplitude + 200)             //Added 200 to get +ve values
         }
     }
     
