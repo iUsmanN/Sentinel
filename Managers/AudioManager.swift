@@ -53,7 +53,7 @@ class AudioManager {
         AudioManager.mic            = AKMicrophone()
         
         //TEST Player
-        let file                    = try? AKAudioFile(readFileName: "heart.mp3")
+        let file                    = try? AKAudioFile(readFileName: "frequencies2.mp3")
         player                      = try? AKPlayer(audioFile: file!)
         
         //Initial signal Amplification
@@ -103,7 +103,7 @@ class AudioManager {
             AudioManager.tracker.start()
             
             //Capture FFT data every 0.1s
-            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (_) in
+            Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
                 
                 //Print converted raw FFT data
                 self.processFFTData(fftTapNode: self.FFT)

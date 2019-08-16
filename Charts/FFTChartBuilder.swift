@@ -13,7 +13,7 @@ import UIKit
 class FFTChartBuilder {
     
     //Number of Bins to Show
-    var bins                = 500
+    var bins                = 10
     
     //Line chart view
     var view                : LineChartView!
@@ -55,10 +55,23 @@ class FFTChartBuilder {
         //Prepare line chart data
         let linechartdata = LineChartData(dataSet: linedataset)
         
+        //Disable value labels on plot line
+        linechartdata.setDrawValues(false)
+        
         //Draw chart
         view.data = linechartdata
         
-        //Animate chart
-        //view.animate(xAxisDuration: 1, yAxisDuration: 1, easingOptionX: .easeOutSine, easingOptionY: .easeOutSine)
+        //Set Chart Colors
+        view.legend.textColor = .white
+        view.xAxis.labelTextColor = .white
+        view.leftAxis.labelTextColor = .white
+        
+        //Set minimum Y-axis value
+        view.leftAxis.axisMinimum = 0
+        view.rightAxis.axisMinimum = 0
+        
+        //Set maximum Y-axis value
+        view.leftAxis.axisMaximum = 300
+        view.rightAxis.axisMaximum = 300
     }
 }

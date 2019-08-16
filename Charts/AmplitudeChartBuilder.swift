@@ -70,7 +70,7 @@ class AmplitudeChartBuilder {
         
         
         //Prepare dataset 2
-        let linedataset2 = LineChartDataSet(entries: MicrophoneArray, label: "Amplitude")
+        let linedataset2 = LineChartDataSet(entries: MicrophoneArray, label: "Max Frequency")
         linedataset2.circleHoleColor = .clear
         linedataset2.setColor(.red)
         linedataset2.circleRadius = 0
@@ -78,11 +78,18 @@ class AmplitudeChartBuilder {
         
         //Prepare line chart data
         let linechartdata = LineChartData(dataSet: linedataset2)
+        
+        //Disable value labels on plot line
         linechartdata.setDrawValues(false)
+        
+        //Set Chart Colors
+        view.legend.textColor = .white
+        view.xAxis.labelTextColor = .white
+        view.leftAxis.labelTextColor = .white
+        
         //Draw chart
         view.data = linechartdata
         
-        //Animate chart
-        //view.animate(xAxisDuration: 1, yAxisDuration: 1, easingOptionX: .easeOutSine, easingOptionY: .easeOutSine)
+        
     }
 }
