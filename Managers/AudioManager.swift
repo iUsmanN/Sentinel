@@ -53,7 +53,7 @@ class AudioManager {
         AudioManager.mic            = AKMicrophone()
         
         //TEST Player
-        let file                    = try? AKAudioFile(readFileName: "frequencies3.mp3")
+        let file                    = try? AKAudioFile(readFileName: "heart.mp3")
         player                      = try? AKPlayer(audioFile: file!)
         
         //Initial signal Amplification
@@ -74,18 +74,16 @@ class AudioManager {
         //Deamplifying the high frequency sound for further clarity (giving the positively amplified output as input)
         equalizerNegative           = AKEqualizerFilter(equalizerPositive, centerFrequency: 10210, bandwidth: 9790, gain: -4)
         
-        // Pull Amplified output into the tracker node.
-        AudioManager.tracker        = AKFrequencyTracker(equalizerNegative)//player)
-        
-        //SETUP MAIN INPUT NODE
+        // MARK: SETUP MAIN INPUT NODE
         //-> Set this to     "equalizerNegative"    to get input from Microphone
         //-> Set this to           "player"         to get input from player. Also call self.player.play() after starting AudioEngine
-        mainInputNode = equalizerNegative
+        mainInputNode = player
         
         //Taps the fft information
         FFT                         = AKFFTTap(mainInputNode)//player)//equalizerNegative)
         
-        //ADD ADDITIONAL NODES HERE//
+        // Pull Amplified output into the tracker node.
+        AudioManager.tracker        = AKFrequencyTracker(mainInputNode)//player)
         
         // Assign the output to be the final audio output
         AudioKit.output             = mainInputNode//AudioManager.mic//player//AudioManager.tracker
@@ -97,11 +95,15 @@ class AudioManager {
             self.startAudioEngine()
             self.lowpass.start()
             self.bandPass.start()
-            //self.player.play()
+            
+            // MARK: Toggle Player
+            self.player.play()
+            
+            //Start AudioEngine
             AudioManager.tracker.start()
             
-            //Capture Values every 0.1s
-            Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { (_) in
+            //Capture FFT data every 0.1s
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (_) in
                 
                 //Print converted raw FFT data
                 self.processFFTData(fftTapNode: self.FFT)
@@ -114,10 +116,12 @@ class AudioManager {
                 self.updateChartFFT()
             }
             
+            //Capture Amplitude data every 0.1s
             Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (_) in
                 
                 //Save amplified data to array2 (Multiplied by 1000 to draw it on graph)
-                self.micDataArray.append(AudioManager.tracker.amplitude * self.ampFactor)
+                //self.micDataArray.append((self.FFT.fftData.max()! * 1000000000))
+                DataManager.sharedInstance.microphoneOutput.append(self.FFT.fftData.max()!)
                 
                 //Save dynamic average in array
                 self.averageArray.append(self.getAverage(input: AudioManager.tracker.amplitude * self.ampFactor) * 1.2)

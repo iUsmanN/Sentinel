@@ -26,6 +26,9 @@ class AmplitudeChartBuilder {
     
     func fetchData() {
         
+        MicrophoneArray = [ChartDataEntry]()
+        averagesArray   = [ChartDataEntry]()
+        
         //Used for graph x axis
         var x = 0
         
@@ -49,7 +52,7 @@ class AmplitudeChartBuilder {
             averagesArray.append(ChartDataEntry(x: Double(x), y: i))
             
             //increase x-axis value
-            x += 1
+            //x += 1
         }
         
         //Draw chart
@@ -74,12 +77,12 @@ class AmplitudeChartBuilder {
         linedataset2.valueTextColor = .white
         
         //Prepare line chart data
-        let linechartdata = LineChartData(dataSets: [linedataset, linedataset2])
-        
+        let linechartdata = LineChartData(dataSet: linedataset2)
+        linechartdata.setDrawValues(false)
         //Draw chart
         view.data = linechartdata
         
         //Animate chart
-        view.animate(xAxisDuration: 1, yAxisDuration: 1, easingOptionX: .easeOutSine, easingOptionY: .easeOutSine)
+        //view.animate(xAxisDuration: 1, yAxisDuration: 1, easingOptionX: .easeOutSine, easingOptionY: .easeOutSine)
     }
 }
