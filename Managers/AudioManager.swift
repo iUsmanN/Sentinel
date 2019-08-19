@@ -46,7 +46,7 @@ class AudioManager {
     //Closure to pass Arr
     var updateChartFFT          : (() -> ())!                       //Closure to update the chart
     var updateChartAMPL         : (() -> ())!                       //Closure to update the chart
-    var showResults             : (() -> ())!                       //Closure to show the results in BPM
+    var showResults             : ((Double) -> ())!                       //Closure to show the results in BPM
     
     private init() {
         
@@ -81,13 +81,13 @@ class AudioManager {
         mainInputNode = player
         
         //Taps the fft information
-        FFT                         = AKFFTTap(mainInputNode)//player)//equalizerNegative)
+        FFT                         = AKFFTTap(mainInputNode)
         
         // Pull Amplified output into the tracker node.
-        AudioManager.tracker        = AKFrequencyTracker(mainInputNode)//player)
+        AudioManager.tracker        = AKFrequencyTracker(mainInputNode)
         
         // Assign the output to be the final audio output
-        AudioKit.output             = mainInputNode//AudioManager.mic//player//AudioManager.tracker
+        AudioKit.output             = mainInputNode
         
         //Start Engine After 1s
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
@@ -103,6 +103,7 @@ class AudioManager {
             //Start AudioEngine
             AudioManager.tracker.start()
             
+            //Initialize timer
             var timer: Double = 0
             
             //Capture FFT data every 0.05s
@@ -130,7 +131,7 @@ class AudioManager {
                 self.updateChartAMPL()
                 
                 //Show realtime results
-                self.showResults()
+                self.showResults(timer)
                 
                 timer += 0.05
             }
@@ -170,7 +171,7 @@ class AudioManager {
     }
     
     //Sets closure to return data to the Chart Builder
-    func setReturnClosure(chartUpdateClosureFFT: @escaping () -> (), chartUpdateClosureAMPL: @escaping () -> (), resultsShowingClosureAMPL: @escaping ()->()) {
+    func setReturnClosure(chartUpdateClosureFFT: @escaping () -> (), chartUpdateClosureAMPL: @escaping () -> (), resultsShowingClosureAMPL: @escaping (Double)->()) {
         updateChartFFT  = chartUpdateClosureFFT
         updateChartAMPL = chartUpdateClosureAMPL
         showResults     = resultsShowingClosureAMPL

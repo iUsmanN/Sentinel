@@ -39,19 +39,36 @@ extension CalculatesResults {
         return getPeaks() * 4
     }
     
-    func findPeak() {
+    func findPeak(timer: Double) -> Bool {
         
-        let threshold = 100.0
+        let threshold = 125.0
         var peak = false
+        
+        var gotPeak = false
+        var validTime = false
         
         //Find peaks in range 43Hz and 172 Hz according to the data given below
         for i in 2...8 {
             if (DataManager.sharedInstance.dbValues[i] > threshold) {
-                peak = true
+                if(timer > CONSTANTS.VARIABLES.LATEST_TIME_STAMP + 0.4) {
+                    gotPeak = true
+                    //CONSTANTS.VARIABLES.LATEST_TIME_STAMP = timer
+                }
             }
         }
         
-        if peak { print("---") } else { print("-") }
+        //Check that peak lies after the 40ms interval
+        if gotPeak {
+            //print(CONSTANTS.VARIABLES.LATEST_TIME_STAMP + 0.4)
+            if(timer > CONSTANTS.VARIABLES.LATEST_TIME_STAMP + 0.4) {
+                validTime = true
+                CONSTANTS.VARIABLES.LATEST_TIME_STAMP = timer
+            }
+        }
+        
+        if validTime { print("---") } else { print("-") }
+        
+        return validTime
     }
 }
 
