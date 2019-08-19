@@ -46,7 +46,6 @@ extension ViewController : CalculatesResults {
     
     //Show results on screen
     func showResults() {
-        //self.amplitude.text = "BPM : \(getBPM())"
-        self.amplitude.textAlignment = .center
+        findPeak()
     }
 }

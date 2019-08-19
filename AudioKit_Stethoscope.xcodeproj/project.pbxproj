@@ -21,6 +21,7 @@
 		4A1140612306829800A2E45D /* heart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A1140602306829800A2E45D /* heart.mp3 */; };
 		4A1140632306833200A2E45D /* frequencies3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A1140622306833200A2E45D /* frequencies3.mp3 */; };
 		4A1140652306A36C00A2E45D /* frequencies4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A1140642306A36B00A2E45D /* frequencies4.mp3 */; };
+		4A41F7BB230A8C4800D8F035 /* ResultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A41F7BA230A8C4800D8F035 /* ResultsManager.swift */; };
 		4A9F039F2306BB0C00A871B1 /* beat3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A9F039E2306BB0C00A871B1 /* beat3.mp3 */; };
 		4AAC7A0222F8037300F4768D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A0122F8037300F4768D /* AppDelegate.swift */; };
 		4AAC7A0422F8037300F4768D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC7A0322F8037300F4768D /* ViewController.swift */; };
@@ -57,9 +58,10 @@
 		4A11405A2305631600A2E45D /* f0.1K.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = f0.1K.mp3; sourceTree = "<group>"; };
 		4A11405C230577A500A2E45D /* frequencies.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frequencies.mp3; sourceTree = "<group>"; };
 		4A11405E230578FC00A2E45D /* frequencies2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frequencies2.mp3; sourceTree = "<group>"; };
-		4A1140602306829800A2E45D /* heart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = heart.mp3; sourceTree = "<group>"; };
+		4A1140602306829800A2E45D /* heart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = heart.mp3; path = "../Sound Files/heart.mp3"; sourceTree = "<group>"; };
 		4A1140622306833200A2E45D /* frequencies3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frequencies3.mp3; sourceTree = "<group>"; };
 		4A1140642306A36B00A2E45D /* frequencies4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frequencies4.mp3; sourceTree = "<group>"; };
+		4A41F7BA230A8C4800D8F035 /* ResultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsManager.swift; sourceTree = "<group>"; };
 		4A9F039E2306BB0C00A871B1 /* beat3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beat3.mp3; sourceTree = "<group>"; };
 		4AAC79FE22F8037300F4768D /* AudioKit_Stethoscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioKit_Stethoscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AAC7A0122F8037300F4768D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				4A1140622306833200A2E45D /* frequencies3.mp3 */,
-				4A1140602306829800A2E45D /* heart.mp3 */,
 				4A11405E230578FC00A2E45D /* frequencies2.mp3 */,
 				4A11405C230577A500A2E45D /* frequencies.mp3 */,
 				4A11405A2305631600A2E45D /* f0.1K.mp3 */,
@@ -142,6 +143,7 @@
 		4AAC7A0022F8037300F4768D /* AudioKit_Stethoscope */ = {
 			isa = PBXGroup;
 			children = (
+				4A1140602306829800A2E45D /* heart.mp3 */,
 				4A9F039E2306BB0C00A871B1 /* beat3.mp3 */,
 				4A11401B230538B300A2E45D /* callas8.wav */,
 				4A1140642306A36B00A2E45D /* frequencies4.mp3 */,
@@ -179,6 +181,7 @@
 				4AAC7A2A22F8541400F4768D /* DataManager.swift */,
 				4AAC7A2222F810FB00F4768D /* AudioManager.swift */,
 				4AAC7A2D22F85EE400F4768D /* CalculatesResults.swift */,
+				4A41F7BA230A8C4800D8F035 /* ResultsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				4AAC7A0422F8037300F4768D /* ViewController.swift in Sources */,
 				4AAC7A2B22F8541400F4768D /* DataManager.swift in Sources */,
 				4AAC7A2E22F85EE400F4768D /* CalculatesResults.swift in Sources */,
+				4A41F7BB230A8C4800D8F035 /* ResultsManager.swift in Sources */,
 				4AAC7A2322F810FB00F4768D /* AudioManager.swift in Sources */,
 				4AAC7A2822F824BA00F4768D /* AmplitudeChartBuilder.swift in Sources */,
 				4AAC7A0222F8037300F4768D /* AppDelegate.swift in Sources */,

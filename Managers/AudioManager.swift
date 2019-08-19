@@ -38,6 +38,7 @@ class AudioManager {
     var micDataArray            = [Double]()                        //Stores the amplitude values for the chart
     var frequencyArray          = [Double]()                        //Stores the frequency interval values
     var dBArray                 = [Double]()                        //Stores the dB values for the chart
+    var timerArray              = [Double]()                        //Stores Time Values
     
     //Manual Amplification
     var ampFactor               = 1                                 //Manual amplification factor
@@ -53,7 +54,7 @@ class AudioManager {
         AudioManager.mic            = AKMicrophone()
         
         //TEST Player
-        let file                    = try? AKAudioFile(readFileName: "frequencies2.mp3")
+        let file                    = try? AKAudioFile(readFileName: "heart.mp3")
         player                      = try? AKPlayer(audioFile: file!)
         
         //Initial signal Amplification
@@ -102,46 +103,45 @@ class AudioManager {
             //Start AudioEngine
             AudioManager.tracker.start()
             
-            //Capture FFT data every 0.1s
+            var timer: Double = 0
+            
+            //Capture FFT data every 0.05s
             Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
                 
-                //Print converted raw FFT data
-                self.processFFTData(fftTapNode: self.FFT)
+                //print(timer)
                 
-                //Save Data in Data Manager
+                //Print converted raw FFT data
+                self.processFFTData(fftTapNode: self.FFT, timer: timer)
+
+                //Save Time Stamp
+                //self.timerArray.append(timer)
+                
+                //Save FFT Data in Data Manager
                 DataManager.sharedInstance.setFrequencyIntervals(input: self.frequencyArray)
                 DataManager.sharedInstance.setDbData(input: self.dBArray)
                 
-                //Refresh FFT Chart
-                self.updateChartFFT()
-            }
-            
-            //Capture Amplitude data every 0.1s
-            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (_) in
+                //Save timer value
+                //DataManager.sharedInstance.timeSamples.append(timer)
+                DataManager.sharedInstance.timer = timer
                 
-                //Save amplified data to array2 (Multiplied by 1000 to draw it on graph)
-                //self.micDataArray.append((self.FFT.fftData.max()! * 1000000000))
+                //Save AMPL Data in Data Manager
                 DataManager.sharedInstance.microphoneOutput.append(self.FFT.fftData.max()!)
                 
-                //Save dynamic average in array
-                self.averageArray.append(self.getAverage(input: AudioManager.tracker.amplitude * self.ampFactor) * 1.2)
+                //Refresh FFT Chart
+                self.updateChartFFT()
                 
-                self.updateChartAMPL()
-            })
-            
-            //Stop Recording after 15s
-            Timer.scheduledTimer(withTimeInterval: 150, repeats: false) { timer in
-                self.stopAudioEngine()
-                
-                //Save Data in Data Manager
-                DataManager.sharedInstance.setMicOutputs(input: self.micDataArray)
-                DataManager.sharedInstance.setDynamicAvgs(input: self.averageArray)
-                
-                //Update chart Data
+                //Refresh AMPL Chart
                 self.updateChartAMPL()
                 
-                //Show BPM count
+                //Get realtime results
                 self.showResults()
+                
+                timer += 0.05
+            }
+            
+            //Stop Recording after 10s
+            Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { timer in
+                self.stopAudioEngine()
             }
         }
     }
@@ -149,20 +149,30 @@ class AudioManager {
     //Update: WORKS
     //Converts raw FFT Data to frequency and amplitudes based upon :
     // https://stackoverflow.com/questions/52687711/trying-to-understand-the-output-of-akffttap-in-audiokit
-    func processFFTData(fftTapNode: AKFFTTap){
+    func processFFTData(fftTapNode: AKFFTTap, timer: Double){
         
+        //Sampling Rate in Hz
+        let samplingRate = 1024
+        
+        //Number of Values to be stored on array
+        let valuesCaptured = 25
+        
+        //Array to hold frequencies
         frequencyArray = [Double]()
+        
+        //Array to hold frequency amplitude values
         dBArray = [Double]()
         
-        for i in 0...510 {
+        for i in 0...valuesCaptured {
             
             let re = fftTapNode.fftData[i]
             let im = fftTapNode.fftData[i + 1]
-            let normBinMag = 2.0 * sqrt(re * re + im * im)/512
+            let normBinMag = 2.0 * sqrt(re * re + im * im)/samplingRate
             let amplitude  = 20.0 * log10(normBinMag)
-            let frequency  = AKSettings.sampleRate * 0.5 * i/512
+            let frequency  = AKSettings.sampleRate * 0.5 * i/samplingRate
             
-            print("Frequency: \(frequency), Amplitude: \(amplitude)")
+            //print("Timer: \(timer), Frequency: \(frequency), Amplitude: \(amplitude + 200)")
+            
             frequencyArray.append(frequency)
             dBArray.append(amplitude + 200)             //Added 200 to get +ve values
         }

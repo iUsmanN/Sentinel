@@ -25,6 +25,12 @@ class DataManager {
     //Stores dB Values
     var dbValues : [Double] = [Double]()
     
+    //Stores timeSamples
+    var timeSamples : [Double] = [Double]()
+    
+    //Universal timer for values
+    var timer : Double = 0.0
+    
     //Sets microphone inputs
     func setMicOutputs(input: [Double]) {
         microphoneOutput = input

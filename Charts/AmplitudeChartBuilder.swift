@@ -30,29 +30,16 @@ class AmplitudeChartBuilder {
         averagesArray   = [ChartDataEntry]()
         
         //Used for graph x axis
-        var x = 0
+        var x = 0.0
         
         //Populate array for Amplitudes by getting values from data manager singleton
         for i in DataManager.sharedInstance.getMicOutputs() {
             
             //Store value
-            MicrophoneArray.append(ChartDataEntry(x: Double(x), y: i))
+            MicrophoneArray.append(ChartDataEntry(x: Double(x), y: Double(i)))
             
-            //increase x-axis value
-            x += 1
-        }
-        
-        //Reset graph x scale
-        x = 0
-        
-        //Populate array for Averages by getting values from data manager singleton
-        for i in DataManager.sharedInstance.getDynamicAverage() {
-            
-            //Store value
-            averagesArray.append(ChartDataEntry(x: Double(x), y: i))
-            
-            //increase x-axis value
-            //x += 1
+            //increase x-axis value -> Value is 0.05 because of the rate at which values are put from the Audio Manager
+            x += 0.05
         }
         
         //Draw chart
@@ -62,14 +49,7 @@ class AmplitudeChartBuilder {
     //Draws the chart
     func drawChart() {
         
-        //Prepare data set 1
-        let linedataset = LineChartDataSet(entries: averagesArray, label: "Threshold")
-        linedataset.circleHoleColor = .clear
-        linedataset.setColor(.white)
-        linedataset.circleRadius = 0
-        
-        
-        //Prepare dataset 2
+        //Prepare dataset
         let linedataset2 = LineChartDataSet(entries: MicrophoneArray, label: "Max Frequency")
         linedataset2.circleHoleColor = .clear
         linedataset2.setColor(.red)
@@ -89,7 +69,5 @@ class AmplitudeChartBuilder {
         
         //Draw chart
         view.data = linechartdata
-        
-        
     }
 }
