@@ -41,8 +41,11 @@ extension CalculatesResults {
     
     func findPeak(timer: Double) -> Bool {
         
-        let threshold = 125.0
-        var peak = false
+        //Threshold to get peaks
+        let threshold   = 125.0
+        
+        //Delay to skip/ignore S2 peaks and get only valid peaks
+        let s2Delay     = 0.5
         
         var gotPeak = false
         var validTime = false
@@ -50,7 +53,7 @@ extension CalculatesResults {
         //Find peaks in range 43Hz and 172 Hz according to the data given below
         for i in 2...8 {
             if (DataManager.sharedInstance.dbValues[i] > threshold) {
-                if(timer > CONSTANTS.VARIABLES.LATEST_TIME_STAMP + 0.4) {
+                if(timer > CONSTANTS.VARIABLES.LATEST_TIME_STAMP + s2Delay) {
                     gotPeak = true
                     //CONSTANTS.VARIABLES.LATEST_TIME_STAMP = timer
                 }
