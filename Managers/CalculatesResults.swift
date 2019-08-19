@@ -44,6 +44,7 @@ extension CalculatesResults {
         let threshold = 100.0
         var peak = false
         
+        //Find peaks in range 43Hz and 172 Hz according to the data given below
         for i in 2...8 {
             if (DataManager.sharedInstance.dbValues[i] > threshold) {
                 peak = true
@@ -55,7 +56,6 @@ extension CalculatesResults {
 }
 
 /*
- 
  - 0 : 0.0
  - 1 : 21.533203125
  - 2 : 43.06640625
@@ -82,5 +82,4 @@ extension CalculatesResults {
  - 23 : 495.263671875
  - 24 : 516.796875
  - 25 : 538.330078125
- 
  */

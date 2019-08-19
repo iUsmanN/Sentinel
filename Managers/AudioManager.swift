@@ -112,16 +112,12 @@ class AudioManager {
                 
                 //Print converted raw FFT data
                 self.processFFTData(fftTapNode: self.FFT, timer: timer)
-
-                //Save Time Stamp
-                //self.timerArray.append(timer)
                 
                 //Save FFT Data in Data Manager
                 DataManager.sharedInstance.setFrequencyIntervals(input: self.frequencyArray)
                 DataManager.sharedInstance.setDbData(input: self.dBArray)
                 
                 //Save timer value
-                //DataManager.sharedInstance.timeSamples.append(timer)
                 DataManager.sharedInstance.timer = timer
                 
                 //Save AMPL Data in Data Manager
@@ -133,7 +129,7 @@ class AudioManager {
                 //Refresh AMPL Chart
                 self.updateChartAMPL()
                 
-                //Get realtime results
+                //Show realtime results
                 self.showResults()
                 
                 timer += 0.05
@@ -151,25 +147,20 @@ class AudioManager {
     // https://stackoverflow.com/questions/52687711/trying-to-understand-the-output-of-akffttap-in-audiokit
     func processFFTData(fftTapNode: AKFFTTap, timer: Double){
         
-        //Sampling Rate in Hz
-        let samplingRate = 1024
-        
-        //Number of Values to be stored on array
-        let valuesCaptured = 25
-        
         //Array to hold frequencies
         frequencyArray = [Double]()
         
         //Array to hold frequency amplitude values
         dBArray = [Double]()
         
-        for i in 0...valuesCaptured {
+        //Prepare data for required frequency bins
+        for i in 0...CONSTANTS.VARIABLES.BINS {
             
             let re = fftTapNode.fftData[i]
             let im = fftTapNode.fftData[i + 1]
-            let normBinMag = 2.0 * sqrt(re * re + im * im)/samplingRate
+            let normBinMag = 2.0 * sqrt(re * re + im * im) / CONSTANTS.VARIABLES.SAMPLING_RATE
             let amplitude  = 20.0 * log10(normBinMag)
-            let frequency  = AKSettings.sampleRate * 0.5 * i/samplingRate
+            let frequency  = AKSettings.sampleRate * 0.5 * i / CONSTANTS.VARIABLES.SAMPLING_RATE
             
             //print("Timer: \(timer), Frequency: \(frequency), Amplitude: \(amplitude + 200)")
             

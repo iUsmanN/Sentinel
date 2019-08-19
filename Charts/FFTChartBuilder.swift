@@ -13,7 +13,7 @@ import UIKit
 class FFTChartBuilder {
     
     //Number of Bins to Show
-    var bins                = 25
+    var bins                = CONSTANTS.VARIABLES.BINS//25
     
     //Line chart view
     var view                : LineChartView!
