@@ -57,7 +57,7 @@ class AudioManager {
         player                      = try? AKPlayer(audioFile: file!)
         
         //Initial signal Amplification
-        boost = AKBooster(AudioManager.mic, gain: 2)
+        boost = AKBooster(AudioManager.mic, gain: 3)
         
         //Add Low pass filter at 420 Hz to remove noise (giving mic as input)
         lowpass                     = AKLowPassFilter(boost)

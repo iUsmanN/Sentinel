@@ -11,60 +11,60 @@ import Foundation
 class DataManager {
     
     //Singleton instance
-    static let sharedInstance       = DataManager()
+    static let sharedInstance           = DataManager()
     
     //Stores microphone amplitude data
-    var microphoneOutput : [Double] = [Double]()
+    var microphoneOutput : [Double]     = [Double]()
     
     //Stores average of amplitude data overtime
-    var dynamicAverage : [Double]   = [Double]()
+    var dynamicAverage : [Double]       = [Double]()
     
     //Stores Frequency Intervals
-    var frequencyIntervals : [Double] = [Double]()
+    var frequencyIntervals : [Double]   = [Double]()
     
     //Stores dB Values
-    var dbValues : [Double] = [Double]()
+    var dbValues : [Double]             = [Double]()
     
     //Universal timer for values
-    var timer : Double = 0.0
+    var timer : Double                  = 0.0
     
     //Sets microphone inputs
-    func setMicOutputs(input: [Double]) {
-        microphoneOutput = input
+    func setMicOutputs(input: [Double])         {
+        microphoneOutput    = input
     }
     
     //Sets average data
-    func setDynamicAvgs(input: [Double]) {
-        dynamicAverage = input
+    func setDynamicAvgs(input: [Double])        {
+        dynamicAverage      = input
     }
     
     //Sets frequency intervals
     func setFrequencyIntervals(input: [Double]) {
-        frequencyIntervals = input
+        frequencyIntervals  = input
     }
     
     //Sets dB data
-    func setDbData(input: [Double]) {
-        dbValues = input
+    func setDbData(input: [Double])             {
+        dbValues            = input
     }
     
     //Gets microphone data
-    func getMicOutputs() -> [Double] {
+    func getMicOutputs()            -> [Double] {
         return microphoneOutput
     }
     
     //Gets average data
-    func getDynamicAverage() -> [Double] {
+    func getDynamicAverage()        -> [Double] {
         return dynamicAverage
     }
     
     //Gets frequency intervals
-    func getFrequencyIntervals() -> [Double] {
+    func getFrequencyIntervals()    -> [Double] {
         return frequencyIntervals
     }
     
     //Gets dB data
-    func getDbData() -> [Double] {
+    func getDbData()                -> [Double] {
         return dbValues
     }
 }

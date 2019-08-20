@@ -15,9 +15,10 @@ struct ResultsManager {
 
 extension ResultsManager {
     
+    
     //Dynamically calculate the threshold using the frequency values outside the range
-    func calculateThreshold() {
-        
+    func calculateThreshold() -> Double {
+        return 0
     }
 
     mutating func findPeak(timer: Double) -> Bool {
@@ -44,7 +45,6 @@ extension ResultsManager {
         if gotPeak {
             if(timer > latestTimeStamp + 0.4) {
                 validTime = true
-                //latestTimeStamp = timer
             }
         }
         
@@ -77,11 +77,11 @@ extension ResultsManager {
         //Get Time stamp
         let timeStamp = makeTimeStamp(time: time)
         
-        //Add value to array if it is valid
-        if(validTimeStamp(timeStamp: timeStamp, minValid: 0.0, maxValid: 10.0)) {
+        //Add value to array if it is valid. Valid Ranges : 0.5s and 1.25s are used for a range of 60 - 100bpm (acc to data)
+        if(validTimeStamp(timeStamp: timeStamp, minValid: 0.5, maxValid: 1.25)) {
             timeStamps.append(timeStamp)
-            print(timeStamp)                    //Print added value
-        }
+            print("\(timeStamp) - Accepted")                            //Print added value
+        } else { print("\(timeStamp) - Rejected") }                     //Print added value}
     }
     
     
@@ -94,6 +94,7 @@ extension ResultsManager {
         //Calculate time stamp
         let timeStamp = time - latestTimeStamp
         
+        print("Time Stamp : \(time) - \(latestTimeStamp)")
         //Update latest time
         latestTimeStamp = time
         
