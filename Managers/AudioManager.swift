@@ -28,7 +28,6 @@ class AudioManager {
     var boost                   : AKBooster!                        //Amplifies the signal
     var bandPass                : AKBandPassButterworthFilter!      //Performs Butterworth Band Pass filtering
     var lowpass                 : AKLowPassFilter!                  //Performs Low Pass Filtering
-    var recorder                : AKNodeRecorder!                   //UNUSED
     var equalizerPositive       : AKEqualizerFilter!                //Positively Amplifies required frequencies
     var equalizerNegative       : AKEqualizerFilter!                //Negatively amplifies discardable frequencies
     var FFT                     : AKFFTTap!                         //Tracks the FFT data on the final output
@@ -89,57 +88,61 @@ class AudioManager {
         // Assign the output to be the final audio output
         AudioKit.output             = mainInputNode
         
+        //MOVE THE FOLLOWING CODE OUT TO ANOTHER FUNCTION
+        
         //Start Engine After 1s
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+            self.startStethoscope()
+        }
+        //Stop Engine after 10s
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
+            self.stopAudioEngine()
+        }
+    }
+    
+    func startStethoscope() {
+        
+        //Start Audio Engine
+        self.startAudioEngine()
+        self.lowpass.start()
+        self.bandPass.start()
+        
+        // MARK: Toggle Player
+        self.player.play()
+        
+        //Start AudioEngine
+        AudioManager.tracker.start()
+        
+        //Initialize timer
+        var timer: Double = 0
+        
+        //Capture FFT data every 0.05s
+        Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
             
-            //Start Audio Engine
-            self.startAudioEngine()
-            self.lowpass.start()
-            self.bandPass.start()
+            //Print converted raw FFT data
+            self.processFFTData(fftTapNode: self.FFT, timer: timer)
             
-            // MARK: Toggle Player
-            self.player.play()
+            //Save FFT Data in Data Manager
+            DataManager.sharedInstance.setFrequencyIntervals(input: self.frequencyArray)
+            DataManager.sharedInstance.setDbData(input: self.dBArray)
             
-            //Start AudioEngine
-            AudioManager.tracker.start()
+            //Save timer value
+            DataManager.sharedInstance.timer = timer
             
-            //Initialize timer
-            var timer: Double = 0
+            //Save AMPL Data in Data Manager
+            DataManager.sharedInstance.microphoneOutput.append(self.FFT.fftData.max()!)
             
-            //Capture FFT data every 0.05s
-            Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
-                
-                //print(timer)
-                
-                //Print converted raw FFT data
-                self.processFFTData(fftTapNode: self.FFT, timer: timer)
-                
-                //Save FFT Data in Data Manager
-                DataManager.sharedInstance.setFrequencyIntervals(input: self.frequencyArray)
-                DataManager.sharedInstance.setDbData(input: self.dBArray)
-                
-                //Save timer value
-                DataManager.sharedInstance.timer = timer
-                
-                //Save AMPL Data in Data Manager
-                DataManager.sharedInstance.microphoneOutput.append(self.FFT.fftData.max()!)
-                
-                //Refresh FFT Chart
-                self.updateChartFFT()
-                
-                //Refresh AMPL Chart
-                self.updateChartAMPL()
-                
-                //Show realtime results
-                self.showResults(timer)
-                
-                timer += 0.05
-            }
+            //Show realtime results
+            self.showResults(timer)
             
-            //Stop Recording after 10s
-            Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { timer in
-                self.stopAudioEngine()
-            }
+            //Update timer
+            timer += 0.05
+            
+            //Refresh FFT Chart
+            self.updateChartFFT()
+            
+            //Refresh AMPL Chart
+            self.updateChartAMPL()
         }
     }
     
@@ -163,8 +166,6 @@ class AudioManager {
             let amplitude  = 20.0 * log10(normBinMag)
             let frequency  = AKSettings.sampleRate * 0.5 * i / CONSTANTS.VARIABLES.SAMPLING_RATE
             
-            //print("Timer: \(timer), Frequency: \(frequency), Amplitude: \(amplitude + 200)")
-            
             frequencyArray.append(frequency)
             dBArray.append(amplitude + 200)             //Added 200 to get +ve values
         }
@@ -187,22 +188,5 @@ class AudioManager {
     internal func stopAudioEngine() {
         try? AudioKit.stop()
         print("Audio engine stopped")
-    }
-    
-    //Calculates dynamic average
-    @discardableResult
-    func getAverage(input: Double) -> Double {
-        var sum: Double = 0
-        for i in micDataArray {
-            sum += i
-        }
-        return sum/micDataArray.count
-    }
-    
-    //Custom LowPass Filter
-    func removeHighFrequencyData(inputTracker: AKFrequencyTracker, cutOff: Double) -> (Double?, Double?) {
-        if AudioManager.tracker.frequency < cutOff {
-            return (inputTracker.frequency, inputTracker.amplitude)
-        } else { return (0.0, 0.0) }
     }
 }

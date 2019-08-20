@@ -13,6 +13,7 @@ import Charts
 
 class ViewController: UIViewController {
     
+    //View objects
     @IBOutlet weak var amplitude    : UILabel!
     @IBOutlet weak var lineChart    : LineChartView!
     @IBOutlet weak var averageLabel : UILabel!
@@ -24,6 +25,9 @@ class ViewController: UIViewController {
     //Obj to build chart
     var chart                       : AmplitudeChartBuilder?
     var fft                         : FFTChartBuilder?
+    
+    //Calculates the results in realtime
+    var resultsManager              = ResultsManager()
     
     
     override func viewDidLoad() {
@@ -42,13 +46,12 @@ class ViewController: UIViewController {
 }
 
 //View controller calculates results
-extension ViewController : CalculatesResults {
+extension ViewController {
     
     //Show results on screen
     func showResults(timer: Double) {
-        if findPeak(timer: timer) {
+        if resultsManager.findPeak(timer: timer) {
             amplitude.text = amplitude.text! + "|"
         } else { amplitude.text = amplitude.text! + "." }
     }
 }
-
