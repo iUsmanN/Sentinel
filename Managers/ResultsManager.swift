@@ -9,7 +9,8 @@
 import Foundation
 
 struct ResultsManager {
-    var latestTimeStamp = -1.0
+    var latestTimeStamp         = -1.0
+    var timeStamps              = [Double]()
 }
 
 extension ResultsManager {
@@ -18,34 +19,7 @@ extension ResultsManager {
     func calculateThreshold() {
         
     }
-    
-//    //Get the number of peaks above the average threshhold
-//    func getPeaks() -> Int {
-//
-//        //Count to store number of peaks
-//        var count       = 0
-//
-//        //Local variables to temporarily store values
-//        let micInputs   = DataManager.sharedInstance.getMicOutputs()
-//        let avgInputs   = DataManager.sharedInstance.getDynamicAverage()
-//
-//        //Loop to traverse though the inputs
-//        for i in 1..<micInputs.count-2 {
-//
-//            //Get the peak index
-//            if ((micInputs[i-1] < micInputs[i]) && (micInputs[i] > micInputs[i+1])) && (micInputs[i] > avgInputs [i]) {
-//                count+=1
-//            }
-//        }
-//        //Return count of peaks
-//        return count
-//    }
-//
-//    //returns Beats Per Minute
-//    func getBPM () -> Int {
-//        return getPeaks() * 4
-//    }
-    
+
     mutating func findPeak(timer: Double) -> Bool {
         
         //Threshold to get peaks
@@ -57,7 +31,7 @@ extension ResultsManager {
         var gotPeak = false
         var validTime = false
         
-        //Find peaks in range 43Hz and 172 Hz according to the data given below
+        //Find peaks in range 43Hz and 172 Hz according to the data given at the end of file & in 'Constants' file
         for i in 2...8 {
             if (DataManager.sharedInstance.dbValues[i] > threshold) {
                 if(timer > latestTimeStamp + s2Delay) {
@@ -70,15 +44,84 @@ extension ResultsManager {
         if gotPeak {
             if(timer > latestTimeStamp + 0.4) {
                 validTime = true
-                latestTimeStamp = timer
+                //latestTimeStamp = timer
             }
         }
         
-        if validTime { print("---") } else { print("-") }
+        //if validTime { print("---") } else { print("-") }
         
         return validTime
     }
+    
+    //Starts populating the heat beat intervals
+    mutating func populateCalculationData(timer: Double) -> Bool {
+        let showPeak = findPeak(timer: timer)
+        
+        if showPeak {
+            if(timeStamps.count == 0) {
+                latestTimeStamp = timer
+                timeStamps.append(timer)
+            } else {
+                //add time stamp
+                addTimeStamp(time: timer)
+            }
+        }
+        return showPeak
+    }
+    
+    /// Adds a Valid timestamp into the 'timeStamps' array
+    ///
+    /// - Parameter time: Current timer value
+    mutating func addTimeStamp(time : Double) {
+        
+        //Get Time stamp
+        let timeStamp = makeTimeStamp(time: time)
+        
+        //Add value to array if it is valid
+        if(validTimeStamp(timeStamp: timeStamp, minValid: 0.0, maxValid: 10.0)) {
+            timeStamps.append(timeStamp)
+            print(timeStamp)                    //Print added value
+        }
+    }
+    
+    
+    /// Makes a Time Stamp
+    ///
+    /// - Parameter time: Current timer value
+    /// - Returns: A calculated time Stamp
+    mutating func makeTimeStamp(time : Double) -> Double {
+        
+        //Calculate time stamp
+        let timeStamp = time - latestTimeStamp
+        
+        //Update latest time
+        latestTimeStamp = time
+        
+        //Returns the current timestamp
+        return timeStamp
+    }
+    
+    
+    /// Checks if the Timestamp is valid
+    ///
+    /// - Parameters:
+    ///   - timeStamp: Timestamp to check
+    ///   - minValid: minimum value in seconds of the timestamp
+    ///   - maxValid: maximum value in seconds of the timestamp
+    /// - Returns: A Boolean value to confirm if the timestamp is acceptable
+    func validTimeStamp(timeStamp : Double, minValid : Double, maxValid : Double) -> Bool {
+        
+        //Add to calculation if this is a valid time stamp
+        if(timeStamp > minValid && timeStamp < maxValid) {
+            return true
+        }
+        
+        //Return false if the time stamp does not lie in the required range
+        return false
+    }
 }
+
+
 
 /*
  INDEXES : FREQUENCIES

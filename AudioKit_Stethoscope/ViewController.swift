@@ -50,8 +50,10 @@ extension ViewController {
     
     //Show results on screen
     func showResults(timer: Double) {
-        if resultsManager.findPeak(timer: timer) {
+        if resultsManager.populateCalculationData(timer: timer) {
             amplitude.text = amplitude.text! + "|"
         } else { amplitude.text = amplitude.text! + "." }
     }
 }
+
+// .findPeak(timer: timer)
