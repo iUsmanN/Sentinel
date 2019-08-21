@@ -1,5 +1,5 @@
 # AudioKit_Stethoscope
-An iOS Microphone Stethoscope to Measure Heart Rate using AudioKit and Custom FFT. The app calculates BPM in realtime using noise cancellation, selective amplification and segregation based on frequency distributions to detect probable heartbeat peaks.
+An iOS Microphone Stethoscope Application to Measure Heart Rate using AudioKit and Custom FFT. The app calculates BPM in realtime using noise cancellation, selective amplification and segregation based on frequency distributions to detect probable heartbeat peaks.
 
 ## Instructions
 - Run 'pod install' command in project directory.
