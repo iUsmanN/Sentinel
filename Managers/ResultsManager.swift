@@ -94,7 +94,7 @@ extension ResultsManager {
         //Calculate time stamp
         let timeStamp = time - latestTimeStamp
         
-        print("Time Stamp : \(time) - \(latestTimeStamp)")
+        //print("Time Stamp : \(time) - \(latestTimeStamp)")
         //Update latest time
         latestTimeStamp = time
         

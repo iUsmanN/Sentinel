@@ -88,18 +88,6 @@ class AudioManager {
         
         // Assign the output to be the final audio output
         AudioKit.output             = mainInputNode
-        
-        //MOVE THE FOLLOWING CODE OUT TO ANOTHER FUNCTION
-        
-        //Start Engine After 1s
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
-            self.startStethoscope()
-        }
-        
-//        //Stop Engine after 10s
-//        Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
-//            self.stopStethoscope()
-//        }
     }
     
     /// Starts the Stethoscope
@@ -114,6 +102,11 @@ class AudioManager {
         //Start BPM Measurement after a delay of 5s
         Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (_) in
             self.startMeasuringBPM()
+        }
+        
+        //Stop Engine after 20s
+        Timer.scheduledTimer(withTimeInterval: 20, repeats: false) { _ in
+            self.stopStethoscope()
         }
     }
     

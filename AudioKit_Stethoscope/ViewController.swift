@@ -43,6 +43,10 @@ class ViewController: UIViewController {
             AudioManager.sharedInstance.setReturnClosure(chartUpdateClosureFFT: fft.fetchData, chartUpdateClosureAMPL: chart.fetchData, resultsShowingClosureAMPL: showResults(timer:))
         }
     }
+    @IBAction func startButtonPressed(_ sender: Any) {
+        print("Start Button Pressed")
+        AudioManager.sharedInstance.startStethoscope()
+    }
 }
 
 //View controller calculates results
@@ -55,5 +59,3 @@ extension ViewController {
         } else { amplitude.text = amplitude.text! + "." }
     }
 }
-
-// .findPeak(timer: timer)
