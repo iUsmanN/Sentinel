@@ -43,8 +43,8 @@ class AudioManager {
     var ampFactor               = 1                                 //Manual amplification factor
     
     //Closure to pass Arr
-    var updateChartFFT          : (() -> ())!                       //Closure to update the chart
-    var updateChartAMPL         : (() -> ())!                       //Closure to update the chart
+    var updateChartFFT          : (() -> ())!                             //Closure to update the chart
+    var updateChartAMPL         : (() -> ())!                             //Closure to update the chart
     var showResults             : ((Double) -> ())!                       //Closure to show the results in BPM
     
     private init() {
@@ -55,6 +55,7 @@ class AudioManager {
         //TEST Player
         let file                    = try? AKAudioFile(readFileName: "heart.mp3")
         player                      = try? AKPlayer(audioFile: file!)
+        player.isLooping = true
         
         //Initial signal Amplification
         boost = AKBooster(AudioManager.mic, gain: 3)
@@ -94,13 +95,36 @@ class AudioManager {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
             self.startStethoscope()
         }
-        //Stop Engine after 10s
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
-            self.stopAudioEngine()
+        
+//        //Stop Engine after 10s
+//        Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
+//            self.stopStethoscope()
+//        }
+    }
+    
+    /// Starts the Stethoscope
+    func startStethoscope() {
+        
+        //Start Audio Input and Start AudioEngine
+        startAudioInput()
+        
+        //Set Threshold Immediately
+        startThresholding()
+        
+        //Start BPM Measurement after a delay of 5s
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (_) in
+            self.startMeasuringBPM()
         }
     }
     
-    func startStethoscope() {
+    /// Stops the Stethoscope
+    func stopStethoscope() {
+        stopAudioEngine()
+    }
+    
+    
+    /// Starts Audio Input to the Stethoscope
+    func startAudioInput() {
         
         //Start Audio Engine
         self.startAudioEngine()
@@ -112,6 +136,26 @@ class AudioManager {
         
         //Start AudioEngine
         AudioManager.tracker.start()
+    }
+    
+    
+    /// Starts to set thresholding values
+    func startThresholding() {
+        
+        //start thresholding mechanism
+        
+    }
+    
+    /// Stops setting thresholding values
+    func stopThresholding() {
+        
+        //stop thresholding mechanism
+        
+    }
+    
+    
+    /// Starts Getting FFT Data for Audio Analysis
+    func startMeasuringBPM() {
         
         //Initialize timer
         var timer: Double = 0
@@ -146,9 +190,13 @@ class AudioManager {
         }
     }
     
-    //Update: WORKS
-    //Converts raw FFT Data to frequency and amplitudes based upon :
-    // https://stackoverflow.com/questions/52687711/trying-to-understand-the-output-of-akffttap-in-audiokit
+    /// Update: WORKS
+    /// Converts raw FFT Data to frequency and amplitudes based upon :
+    /// https://stackoverflow.com/questions/52687711/trying-to-understand-the-output-of-akffttap-in-audiokit
+    ///
+    /// - Parameters:
+    ///   - fftTapNode: Raw Data Node
+    ///   - timer: Current Time
     func processFFTData(fftTapNode: AKFFTTap, timer: Double){
         
         //Array to hold frequencies
@@ -171,20 +219,26 @@ class AudioManager {
         }
     }
     
-    //Sets closure to return data to the Chart Builder
+    
+    /// Sets closure to return data to the Chart Builder
+    ///
+    /// - Parameters:
+    ///   - chartUpdateClosureFFT: Closure to Update the FFT Chart on screen
+    ///   - chartUpdateClosureAMPL: Closure to Update the Amplitude Chart on screen
+    ///   - resultsShowingClosureAMPL: Closure to Update BPM Results
     func setReturnClosure(chartUpdateClosureFFT: @escaping () -> (), chartUpdateClosureAMPL: @escaping () -> (), resultsShowingClosureAMPL: @escaping (Double)->()) {
         updateChartFFT  = chartUpdateClosureFFT
         updateChartAMPL = chartUpdateClosureAMPL
         showResults     = resultsShowingClosureAMPL
     }
     
-    //Automatically called
+    ///Automatically called
     internal func startAudioEngine() {
         try? AudioKit.start()
         print("Audio engine started")
     }
     
-    //Automatically called
+    ///Automatically called
     internal func stopAudioEngine() {
         try? AudioKit.stop()
         print("Audio engine stopped")

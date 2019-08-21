@@ -24,7 +24,7 @@ extension ResultsManager {
     mutating func findPeak(timer: Double) -> Bool {
         
         //Threshold to get peaks
-        let threshold   = 125.0
+        let threshold   = 130.0
         
         //Delay to skip/ignore S2 peaks and get only valid peaks
         let s2Delay     = 0.5
