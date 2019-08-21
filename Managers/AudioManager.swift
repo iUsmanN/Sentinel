@@ -21,7 +21,6 @@ class AudioManager {
     
     // Static variables
     static var mic              : AKMicrophone!                     //Audio Input Microphone
-    static var tracker          : AKFrequencyTracker!               //Tracks the frequency of the final processed signal
     
     //Instance Variables
     var player                  : AKPlayer!
@@ -33,14 +32,8 @@ class AudioManager {
     var FFT                     : AKFFTTap!                         //Tracks the FFT data on the final output
     
     //Array to store amplitudes
-    var averageArray            = [Double]()                        //Stores the numeric average values
-    var micDataArray            = [Double]()                        //Stores the amplitude values for the chart
     var frequencyArray          = [Double]()                        //Stores the frequency interval values
     var dBArray                 = [Double]()                        //Stores the dB values for the chart
-    var timerArray              = [Double]()                        //Stores Time Values
-    
-    //Manual Amplification
-    var ampFactor               = 1                                 //Manual amplification factor
     
     //Closure to pass Arr
     var updateChartFFT          : (() -> ())!                             //Closure to update the chart
@@ -83,9 +76,6 @@ class AudioManager {
         //Taps the fft information
         FFT                         = AKFFTTap(mainInputNode)
         
-        // Pull Amplified output into the tracker node.
-        AudioManager.tracker        = AKFrequencyTracker(mainInputNode)
-        
         // Assign the output to be the final audio output
         AudioKit.output             = mainInputNode
     }
@@ -126,9 +116,6 @@ class AudioManager {
         
         // MARK: Toggle Player
         self.player.play()
-        
-        //Start AudioEngine
-        AudioManager.tracker.start()
     }
     
     

@@ -19,9 +19,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var averageLabel : UILabel!
     @IBOutlet var fftplot           : LineChartView!
     
-    //Array to store amplitudes
-    var arr                         = [Double]()
-    
     //Obj to build chart
     var chart                       : AmplitudeChartBuilder?
     var fft                         : FFTChartBuilder?
@@ -29,12 +26,13 @@ class ViewController: UIViewController {
     //Calculates the results in realtime
     var resultsManager              = ResultsManager()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Sets the line chart variable
         chart = AmplitudeChartBuilder(inputView: lineChart)
+        
+        //Sets the FFT Builder
         fft   = FFTChartBuilder(inputView: fftplot)
         
         if let fft = fft, let chart = chart {
@@ -43,6 +41,8 @@ class ViewController: UIViewController {
             AudioManager.sharedInstance.setReturnClosure(chartUpdateClosureFFT: fft.fetchData, chartUpdateClosureAMPL: chart.fetchData, resultsShowingClosureAMPL: showResults(timer:))
         }
     }
+    
+    //Start Audio Engine
     @IBAction func startButtonPressed(_ sender: Any) {
         print("Start Button Pressed")
         AudioManager.sharedInstance.startStethoscope()
