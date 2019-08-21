@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         if let fft = fft, let chart = chart {
             
             //Connect to AudioManager
-            AudioManager.sharedInstance.setReturnClosure(chartUpdateClosureFFT: fft.fetchData, chartUpdateClosureAMPL: chart.fetchData, resultsShowingClosureAMPL: showResults(timer:))
+            AudioManager.sharedInstance.setReturnClosure(chartUpdateClosureFFT: fft.fetchData, chartUpdateClosureAMPL: chart.fetchData, resultsShowingClosureAMPL: showResults(timer:), thresholdUpdatingClosure: calculateThreshold)
         }
     }
     
@@ -57,5 +57,9 @@ extension ViewController {
         if resultsManager.populateCalculationData(timer: timer) {
             amplitude.text = amplitude.text! + "|"
         } else { amplitude.text = amplitude.text! + "." }
+    }
+    
+    func calculateThreshold() {
+        resultsManager.calculateThreshold()
     }
 }

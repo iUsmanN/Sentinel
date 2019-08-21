@@ -39,6 +39,7 @@ class AudioManager {
     var updateChartFFT          : (() -> ())!                             //Closure to update the chart
     var updateChartAMPL         : (() -> ())!                             //Closure to update the chart
     var showResults             : ((Double) -> ())!                       //Closure to show the results in BPM
+    var thresholdUpdated        : (() -> ())!                             //Updates the Threshold
     
     private init() {
         
@@ -46,9 +47,9 @@ class AudioManager {
         AudioManager.mic            = AKMicrophone()
         
         //TEST Player
-        let file                    = try? AKAudioFile(readFileName: "heart.mp3")
+        let file                    = try? AKAudioFile(readFileName: "heart2.mp3")
         player                      = try? AKPlayer(audioFile: file!)
-        player.isLooping = true
+        //player.isLooping = true
         
         //Initial signal Amplification
         boost = AKBooster(AudioManager.mic, gain: 3)
@@ -87,7 +88,7 @@ class AudioManager {
         startAudioInput()
         
         //Set Threshold Immediately
-        startThresholding()
+        setThreshold()
         
         //Start BPM Measurement after a delay of 5s
         Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (_) in
@@ -105,7 +106,6 @@ class AudioManager {
         stopAudioEngine()
     }
     
-    
     /// Starts Audio Input to the Stethoscope
     func startAudioInput() {
         
@@ -120,17 +120,26 @@ class AudioManager {
     
     
     /// Starts to set thresholding values
-    func startThresholding() {
+    func setThreshold() {
         
         //start thresholding mechanism
         
-    }
-    
-    /// Stops setting thresholding values
-    func stopThresholding() {
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
+            
+            //Process Raw FFT
+            self.processFFTData(fftTapNode: self.FFT)
+            
+            //Update Data on Manager
+            DataManager.sharedInstance.setDbData(input: self.dBArray)
+            
+            //Update Threshold Values
+            self.thresholdUpdated()
+        }
         
-        //stop thresholding mechanism
-        
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
+            timer.invalidate()
+            print("Thresholding Stopped")
+        }
     }
     
     
@@ -144,7 +153,7 @@ class AudioManager {
         Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
             
             //Print converted raw FFT data
-            self.processFFTData(fftTapNode: self.FFT, timer: timer)
+            self.processFFTData(fftTapNode: self.FFT)
             
             //Save FFT Data in Data Manager
             DataManager.sharedInstance.setFrequencyIntervals(input: self.frequencyArray)
@@ -177,12 +186,12 @@ class AudioManager {
     /// - Parameters:
     ///   - fftTapNode: Raw Data Node
     ///   - timer: Current Time
-    func processFFTData(fftTapNode: AKFFTTap, timer: Double){
+    func processFFTData(fftTapNode: AKFFTTap){
         
-        //Array to hold frequencies
+        //Refresh Array to hold frequencies
         frequencyArray = [Double]()
         
-        //Array to hold frequency amplitude values
+        //Refresh Array to hold frequency amplitude values
         dBArray = [Double]()
         
         //Prepare data for required frequency bins
@@ -206,10 +215,11 @@ class AudioManager {
     ///   - chartUpdateClosureFFT: Closure to Update the FFT Chart on screen
     ///   - chartUpdateClosureAMPL: Closure to Update the Amplitude Chart on screen
     ///   - resultsShowingClosureAMPL: Closure to Update BPM Results
-    func setReturnClosure(chartUpdateClosureFFT: @escaping () -> (), chartUpdateClosureAMPL: @escaping () -> (), resultsShowingClosureAMPL: @escaping (Double)->()) {
-        updateChartFFT  = chartUpdateClosureFFT
-        updateChartAMPL = chartUpdateClosureAMPL
-        showResults     = resultsShowingClosureAMPL
+    func setReturnClosure(chartUpdateClosureFFT: @escaping () -> (), chartUpdateClosureAMPL: @escaping () -> (), resultsShowingClosureAMPL: @escaping (Double)->(), thresholdUpdatingClosure: @escaping ()->()) {
+        updateChartFFT      = chartUpdateClosureFFT
+        updateChartAMPL     = chartUpdateClosureAMPL
+        showResults         = resultsShowingClosureAMPL
+        thresholdUpdated    = thresholdUpdatingClosure
     }
     
     ///Automatically called

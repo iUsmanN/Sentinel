@@ -18,7 +18,6 @@ struct CONSTANTS {
         
         static let BINS = 25
         static let SAMPLING_RATE = 1024
-        static var LATEST_TIME_STAMP = -1.0                         //UNUSED
     }
 }
 

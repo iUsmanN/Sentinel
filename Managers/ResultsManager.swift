@@ -11,20 +11,23 @@ import Foundation
 struct ResultsManager {
     var latestTimeStamp         = -1.0
     var timeStamps              = [Double]()
+    var threshold               = 0.0
 }
 
 extension ResultsManager {
     
-    
     //Dynamically calculate the threshold using the frequency values outside the range
-    func calculateThreshold() -> Double {
-        return 0
-    }
-
-    mutating func findPeak(timer: Double) -> Bool {
+    mutating func calculateThreshold() {
         
-        //Threshold to get peaks
-        let threshold   = 130.0
+        if let max = DataManager.sharedInstance.dbValues.max() {
+            if max > threshold {
+                threshold = max * 0.85
+                print("Threshold Set To : \(threshold)")
+            }
+        }
+    }
+    
+    mutating func findPeak(timer: Double) -> Bool {
         
         //Delay to skip/ignore S2 peaks and get only valid peaks
         let s2Delay     = 0.5
@@ -81,7 +84,9 @@ extension ResultsManager {
         if(validTimeStamp(timeStamp: timeStamp, minValid: 0.5, maxValid: 1.25)) {
             timeStamps.append(timeStamp)
             print("\(timeStamp) - Accepted")                            //Print added value
-        } else { print("\(timeStamp) - Rejected") }                     //Print added value}
+        } else {
+            print("\(timeStamp) - Rejected")                            //Print added value
+        }
     }
     
     
