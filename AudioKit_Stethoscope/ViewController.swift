@@ -54,12 +54,26 @@ extension ViewController {
     
     //Show results on screen
     func showResults(timer: Double) {
+        
+        //Display peak graph
         if resultsManager.populateCalculationData(timer: timer) {
             amplitude.text = amplitude.text! + "|"
         } else { amplitude.text = amplitude.text! + "." }
+        
+        //Updates UI
+        if resultsManager.calculateBPM() > 0 { //This check is present since initially we get NaN value
+        self.navigationItem.title = "BPM: \(Int(resultsManager.calculateBPM()))"
+        }
     }
     
+    
+    /// Calculates Threshold
     func calculateThreshold() {
+        
+        //Tells ResultManager To Calculate Threshold
         resultsManager.calculateThreshold()
+        
+        //Updates UI
+        self.navigationItem.title = "Determining Threshold"
     }
 }

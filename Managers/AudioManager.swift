@@ -39,18 +39,18 @@ class AudioManager {
     var updateChartFFT          : (() -> ())!                             //Closure to update the chart
     var updateChartAMPL         : (() -> ())!                             //Closure to update the chart
     var showResults             : ((Double) -> ())!                       //Closure to show the results in BPM
-    var thresholdUpdated        : (() -> ())!                             //Updates the Threshold
+    var thresholdUpdated        : (() -> ())!                             //Closure to update the Threshold
     
+    ////Initializes the Audio Engine
     private init() {
         
         // Capture mic input
         AudioManager.mic            = AKMicrophone()
         
         //TEST Player
-        let file                    = try? AKAudioFile(readFileName: "heart2.mp3")
+        let file                    = try? AKAudioFile(readFileName: "beat3.mp3")
         player                      = try? AKPlayer(audioFile: file!)
-        //player.isLooping = true
-        
+        player.isLooping = true
         //Initial signal Amplification
         boost = AKBooster(AudioManager.mic, gain: 3)
         
@@ -103,7 +103,14 @@ class AudioManager {
     
     /// Stops the Stethoscope
     func stopStethoscope() {
+        
+        //Stop Engine
         stopAudioEngine()
+        
+        //Empty values
+        DataManager.sharedInstance.dbValues = [Double]()
+        DataManager.sharedInstance.frequencyIntervals = [Double]()
+        DataManager.sharedInstance.microphoneOutput = [Double]()
     }
     
     /// Starts Audio Input to the Stethoscope
@@ -118,12 +125,10 @@ class AudioManager {
         self.player.play()
     }
     
-    
     /// Starts to set thresholding values
     func setThreshold() {
         
-        //start thresholding mechanism
-        
+        //Send Data For Thresholding every 0.05s
         let timer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (_) in
             
             //Process Raw FFT
@@ -136,12 +141,11 @@ class AudioManager {
             self.thresholdUpdated()
         }
         
+        //Stop Thresholding
         Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
             timer.invalidate()
-            print("Thresholding Stopped")
         }
     }
-    
     
     /// Starts Getting FFT Data for Audio Analysis
     func startMeasuringBPM() {
@@ -207,7 +211,6 @@ class AudioManager {
             dBArray.append(amplitude + 200)             //Added 200 to get +ve values
         }
     }
-    
     
     /// Sets closure to return data to the Chart Builder
     ///

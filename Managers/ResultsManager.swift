@@ -21,8 +21,8 @@ extension ResultsManager {
         
         if let max = DataManager.sharedInstance.dbValues.max() {
             if max > threshold {
-                threshold = max * 0.85
-                print("Threshold Set To : \(threshold)")
+                threshold = max*0.92
+                print("Threshold Set To : \(threshold*0.92)")
             }
         }
     }
@@ -51,24 +51,29 @@ extension ResultsManager {
             }
         }
         
-        //if validTime { print("---") } else { print("-") }
-        
         return validTime
     }
     
     //Starts populating the heat beat intervals
     mutating func populateCalculationData(timer: Double) -> Bool {
+        
+        //Is Peak Found ?
         let showPeak = findPeak(timer: timer)
         
+        //If Peak is found, Add Time Stamp
         if showPeak {
+            
+            //If this is the first Time Stamp, just append it and do not check for validity
             if(timeStamps.count == 0) {
                 latestTimeStamp = timer
                 timeStamps.append(timer)
             } else {
-                //add time stamp
+                //add time stamp through validity checks
                 addTimeStamp(time: timer)
             }
         }
+        
+        //Return true to update UI
         return showPeak
     }
     
@@ -80,10 +85,11 @@ extension ResultsManager {
         //Get Time stamp
         let timeStamp = makeTimeStamp(time: time)
         
-        //Add value to array if it is valid. Valid Ranges : 0.5s and 1.25s are used for a range of 60 - 100bpm (acc to data)
+        //Add value to array if it is valid. Valid Ranges : 0.55s and 1.25s are used for a range of 60 - 100bpm (acc to data)
         if(validTimeStamp(timeStamp: timeStamp, minValid: 0.5, maxValid: 1.25)) {
             timeStamps.append(timeStamp)
             print("\(timeStamp) - Accepted")                            //Print added value
+            //print(calculateBPM())
         } else {
             print("\(timeStamp) - Rejected")                            //Print added value
         }
@@ -124,6 +130,50 @@ extension ResultsManager {
         
         //Return false if the time stamp does not lie in the required range
         return false
+    }
+    
+    /// Calculates and returns the Beats Per Minute
+    ///
+    /// - Returns: Beats Per Minute
+    func calculateBPM() -> Double {
+        return (60.0/getAverage(array: varianceArray(inputArray: timeStamps, average: getAverage(array: timeStamps), variancePercentage: 15)))
+    }
+    
+    /// Returns average of elements in the given array
+    ///
+    /// - Parameter array: Array of Elements
+    /// - Returns: Average Value
+    func getAverage(array : [Double]) -> Double {
+        print(array)
+        print("Average: \(array.reduce(0, +) / Double(array.count))")
+        return (array.reduce(0, +) / Double(array.count))
+    }
+    
+    /// Returns and array with elements after performing variance filtering functions
+    ///
+    /// - Parameters:
+    ///   - inputArray: Original Array
+    ///   - average: Average value
+    ///   - variancePercentage: Percentage of variance allowed
+    /// - Returns: Array of elements after variance filtering
+    func varianceArray(inputArray: [Double], average: Double, variancePercentage: Double) -> [Double] {
+        
+        //Stores Variance Filtered values
+        var output = [Double]()
+        
+        //For each element in original array
+        for i in 0..<inputArray.count {
+            
+            //If element is within the variance percentage from the average,
+            if abs(inputArray[i]-average) < (variancePercentage/100) {
+                
+                //Add element to the output array
+                output.append(inputArray[i])
+            }
+        }
+        
+        //Return variance filtered array
+        return output
     }
 }
 
