@@ -5,6 +5,12 @@ An iOS Microphone Stethoscope Application to Measure Heart Rate using AudioKit a
 - Run 'pod install' command in project directory.
 - Build on Xcode
 
+## Working Pipeline
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/15052850/63525706-8e126280-c517-11e9-9c2a-77efa9eebfbf.png">
+</p>
+
 ## Helping Material
 
 
