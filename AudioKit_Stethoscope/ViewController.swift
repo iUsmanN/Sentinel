@@ -61,8 +61,8 @@ extension ViewController {
         } else { amplitude.text = amplitude.text! + "." }
         
         //Updates UI
-        if resultsManager.calculateBPM() > 0 { //This check is present since initially we get NaN value
-        self.navigationItem.title = "BPM: \(Int(resultsManager.calculateBPM()))"
+        if resultsManager.calculateBPM() < 500 && resultsManager.calculateBPM() > 0 {
+            self.navigationItem.title = "BPM: \(Int(resultsManager.calculateBPM()))"
         }
     }
     
@@ -74,6 +74,6 @@ extension ViewController {
         resultsManager.calculateThreshold()
         
         //Updates UI
-        self.navigationItem.title = "Determining Threshold"
+        self.navigationItem.title = "Determining Threshold -> \(resultsManager.calculateThreshold())"
     }
 }

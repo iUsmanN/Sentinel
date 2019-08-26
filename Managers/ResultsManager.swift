@@ -16,8 +16,9 @@ struct ResultsManager {
 
 extension ResultsManager {
     
+    @discardableResult
     //Dynamically calculate the threshold using the frequency values outside the range
-    mutating func calculateThreshold() {
+    mutating func calculateThreshold() -> Double {
         
         if let max = DataManager.sharedInstance.dbValues.max() {
             if max > threshold {
@@ -25,6 +26,8 @@ extension ResultsManager {
                 print("Threshold Set To : \(threshold*0.92)")
             }
         }
+        
+        return threshold
     }
     
     mutating func findPeak(timer: Double) -> Bool {

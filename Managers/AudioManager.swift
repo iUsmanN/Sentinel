@@ -72,13 +72,15 @@ class AudioManager {
         // MARK: SETUP MAIN INPUT NODE
         //-> Set this to     "equalizerNegative"    to get input from Microphone
         //-> Set this to           "player"         to get input from player. Also call self.player.play() after starting AudioEngine
-        mainInputNode = player
+        mainInputNode = equalizerNegative
         
         //Taps the fft information
         FFT                         = AKFFTTap(mainInputNode)
         
-        // Assign the output to be the final audio output
-        AudioKit.output             = mainInputNode
+        // MARK: Set Output
+        // Assign the output to be the final audio output (Sends microphone output)
+        //Comment this if you are using microphone
+        //AudioKit.output             = mainInputNode
     }
     
     /// Starts the Stethoscope
@@ -122,7 +124,7 @@ class AudioManager {
         self.bandPass.start()
         
         // MARK: Toggle Player
-        self.player.play()
+        //self.player.play()
     }
     
     /// Starts to set thresholding values
@@ -136,6 +138,10 @@ class AudioManager {
             
             //Update Data on Manager
             DataManager.sharedInstance.setDbData(input: self.dBArray)
+            DataManager.sharedInstance.setFrequencyIntervals(input: self.frequencyArray)
+            
+            //Refresh FFT Chart
+            self.updateChartFFT()
             
             //Update Threshold Values
             self.thresholdUpdated()

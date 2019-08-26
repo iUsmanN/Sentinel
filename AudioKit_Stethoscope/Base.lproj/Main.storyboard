@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Bla-->
+        <!--READY-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AudioKit_Stethoscope" customModuleProvider="target" sceneMemberID="viewController">
@@ -53,7 +53,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Bla" id="gZs-aL-DQy">
+                    <navigationItem key="navigationItem" title="READY" id="gZs-aL-DQy">
                         <barButtonItem key="rightBarButtonItem" systemItem="play" id="TYG-oW-COV">
                             <connections>
                                 <action selector="startButtonPressed:" destination="BYZ-38-t0r" id="wBh-Jh-aSi"/>
