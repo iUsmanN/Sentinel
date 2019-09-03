@@ -6,8 +6,8 @@ An iOS Microphone Stethoscope Application to Measure Heart Rate using AudioKit a
 - Build on Xcode
 
 -------------
-<p align="left">
-    <img src="https://user-images.githubusercontent.com/15052850/63678648-0a06f600-c809-11e9-86a2-be1751a71749.gif" width = "200">   
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/15052850/64167385-9dbc7000-ce62-11e9-900d-2bd71e46de02.gif" width = "400">   
 </p>
 
 --------------
