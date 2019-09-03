@@ -10,16 +10,7 @@
 		16B9471D9C5507A45EFB80D7 /* Pods_AudioKit_StethoscopeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FE57A4983998679383F711 /* Pods_AudioKit_StethoscopeTests.framework */; };
 		30CC5644D21BD9AFB5B9CF12 /* Pods_AudioKit_Stethoscope.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7395B957FA487096551C08A9 /* Pods_AudioKit_Stethoscope.framework */; };
 		4A11401C230538B300A2E45D /* callas8.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4A11401B230538B300A2E45D /* callas8.wav */; };
-		4A11401E23053C1900A2E45D /* f1K.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4A11401D23053C1900A2E45D /* f1K.wav */; };
 		4A114052230544FF00A2E45D /* FFTChartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A114051230544FF00A2E45D /* FFTChartBuilder.swift */; };
-		4A11405423055A7E00A2E45D /* callas2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4A11405323055A7E00A2E45D /* callas2.wav */; };
-		4A11405623055B7900A2E45D /* f2K.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A11405523055B7800A2E45D /* f2K.mp3 */; };
-		4A1140592305620000A2E45D /* f10K.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A1140582305620000A2E45D /* f10K.mp3 */; };
-		4A11405B2305631600A2E45D /* f0.1K.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A11405A2305631600A2E45D /* f0.1K.mp3 */; };
-		4A11405D230577A600A2E45D /* frequencies.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A11405C230577A500A2E45D /* frequencies.mp3 */; };
-		4A11405F230578FC00A2E45D /* frequencies2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A11405E230578FC00A2E45D /* frequencies2.mp3 */; };
-		4A1140612306829800A2E45D /* heart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A1140602306829800A2E45D /* heart.mp3 */; };
-		4A1140632306833200A2E45D /* frequencies3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A1140622306833200A2E45D /* frequencies3.mp3 */; };
 		4A1140652306A36C00A2E45D /* frequencies4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A1140642306A36B00A2E45D /* frequencies4.mp3 */; };
 		4A41F7BD230A967100D8F035 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A41F7BC230A967100D8F035 /* Constants.swift */; };
 		4A41F7BF230D568900D8F035 /* heart2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A41F7BE230D568900D8F035 /* heart2.mp3 */; };
@@ -53,16 +44,7 @@
 		032DFB7882A791746957471B /* Pods-AudioKit_Stethoscope.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioKit_Stethoscope.debug.xcconfig"; path = "Target Support Files/Pods-AudioKit_Stethoscope/Pods-AudioKit_Stethoscope.debug.xcconfig"; sourceTree = "<group>"; };
 		03CAF861A599BE2E87073B2C /* Pods-AudioKit_Stethoscope.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioKit_Stethoscope.release.xcconfig"; path = "Target Support Files/Pods-AudioKit_Stethoscope/Pods-AudioKit_Stethoscope.release.xcconfig"; sourceTree = "<group>"; };
 		4A11401B230538B300A2E45D /* callas8.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = callas8.wav; sourceTree = "<group>"; };
-		4A11401D23053C1900A2E45D /* f1K.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = f1K.wav; sourceTree = "<group>"; };
 		4A114051230544FF00A2E45D /* FFTChartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFTChartBuilder.swift; sourceTree = "<group>"; };
-		4A11405323055A7E00A2E45D /* callas2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = callas2.wav; sourceTree = "<group>"; };
-		4A11405523055B7800A2E45D /* f2K.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = f2K.mp3; sourceTree = "<group>"; };
-		4A1140582305620000A2E45D /* f10K.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = f10K.mp3; sourceTree = "<group>"; };
-		4A11405A2305631600A2E45D /* f0.1K.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = f0.1K.mp3; sourceTree = "<group>"; };
-		4A11405C230577A500A2E45D /* frequencies.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frequencies.mp3; sourceTree = "<group>"; };
-		4A11405E230578FC00A2E45D /* frequencies2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frequencies2.mp3; sourceTree = "<group>"; };
-		4A1140602306829800A2E45D /* heart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = heart.mp3; path = "../Sound Files/heart.mp3"; sourceTree = "<group>"; };
-		4A1140622306833200A2E45D /* frequencies3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frequencies3.mp3; sourceTree = "<group>"; };
 		4A1140642306A36B00A2E45D /* frequencies4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = frequencies4.mp3; sourceTree = "<group>"; };
 		4A41F7BC230A967100D8F035 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4A41F7BE230D568900D8F035 /* heart2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = heart2.mp3; sourceTree = "<group>"; };
@@ -109,25 +91,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4A1140662306A58800A2E45D /* Sound Files */ = {
-			isa = PBXGroup;
-			children = (
-				4A1140622306833200A2E45D /* frequencies3.mp3 */,
-				4A11405E230578FC00A2E45D /* frequencies2.mp3 */,
-				4A11405C230577A500A2E45D /* frequencies.mp3 */,
-				4A11405A2305631600A2E45D /* f0.1K.mp3 */,
-				4A1140582305620000A2E45D /* f10K.mp3 */,
-				4A11405523055B7800A2E45D /* f2K.mp3 */,
-				4A11405323055A7E00A2E45D /* callas2.wav */,
-				4A11401D23053C1900A2E45D /* f1K.wav */,
-			);
-			path = "Sound Files";
-			sourceTree = "<group>";
-		};
 		4AAC79F522F8037300F4768D = {
 			isa = PBXGroup;
 			children = (
-				4A1140662306A58800A2E45D /* Sound Files */,
 				4AAC7A2922F8540500F4768D /* Managers */,
 				4AAC7A2622F824A400F4768D /* Charts */,
 				4AAC7A0022F8037300F4768D /* AudioKit_Stethoscope */,
@@ -154,7 +120,6 @@
 				4AF52A7D231E6CCB00DCB43C /* ok.m4a */,
 				4A41F7BE230D568900D8F035 /* heart2.mp3 */,
 				4A41F7C0230D646E00D8F035 /* heart3.mp3 */,
-				4A1140602306829800A2E45D /* heart.mp3 */,
 				4A9F039E2306BB0C00A871B1 /* beat3.mp3 */,
 				4A11401B230538B300A2E45D /* callas8.wav */,
 				4A1140642306A36B00A2E45D /* frequencies4.mp3 */,
@@ -301,24 +266,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A11405F230578FC00A2E45D /* frequencies2.mp3 in Resources */,
-				4A1140592305620000A2E45D /* f10K.mp3 in Resources */,
 				4AAC7A0C22F8037400F4768D /* LaunchScreen.storyboard in Resources */,
 				4AAC7A0922F8037400F4768D /* Assets.xcassets in Resources */,
 				4A41F7C1230D646E00D8F035 /* heart3.mp3 in Resources */,
 				4A1140652306A36C00A2E45D /* frequencies4.mp3 in Resources */,
-				4A1140632306833200A2E45D /* frequencies3.mp3 in Resources */,
-				4A11405423055A7E00A2E45D /* callas2.wav in Resources */,
-				4A11405623055B7900A2E45D /* f2K.mp3 in Resources */,
 				4AAC7A0722F8037300F4768D /* Main.storyboard in Resources */,
-				4A1140612306829800A2E45D /* heart.mp3 in Resources */,
-				4A11401E23053C1900A2E45D /* f1K.wav in Resources */,
 				4A11401C230538B300A2E45D /* callas8.wav in Resources */,
 				4A9F039F2306BB0C00A871B1 /* beat3.mp3 in Resources */,
 				4AF52A7F231E711400DCB43C /* ok.mp3 in Resources */,
-				4A11405B2305631600A2E45D /* f0.1K.mp3 in Resources */,
 				4A41F7BF230D568900D8F035 /* heart2.mp3 in Resources */,
-				4A11405D230577A600A2E45D /* frequencies.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
