@@ -16,8 +16,10 @@ struct CONSTANTS {
     
         private init(){}
         
-        static let BINS = 25
+        static let BINS = 15
         static let SAMPLING_RATE = 1024
+        static let MIN_FREQUENCY = 20
+        static let MAX_FREQUENCY = 120
     }
 }
 

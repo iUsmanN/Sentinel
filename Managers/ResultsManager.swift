@@ -9,9 +9,10 @@
 import Foundation
 
 struct ResultsManager {
-    var latestTimeStamp         = -1.0
-    var timeStamps              = [Double]()
-    var threshold               = 0.0
+    var latestTimeStamp                 = -1.0
+    var timeStamps                      = [Double]()
+    static var threshold                = 0.0
+    var thresholdMultiplier             = 0.86
 }
 
 extension ResultsManager {
@@ -20,14 +21,13 @@ extension ResultsManager {
     //Dynamically calculate the threshold using the frequency values outside the range
     mutating func calculateThreshold() -> Double {
         
-        if let max = DataManager.sharedInstance.dbValues.max() {
-            if max > threshold {
-                threshold = max*0.92
-                print("Threshold Set To : \(threshold*0.92)")
+        if let max = DataManager.sharedInstance.dbValues.max(){
+            if max * thresholdMultiplier > ResultsManager.threshold {
+                ResultsManager.threshold = max * thresholdMultiplier
+                print("Threshold Set To : \(ResultsManager.threshold * thresholdMultiplier)")
             }
         }
-        
-        return threshold
+        return ResultsManager.threshold
     }
     
     mutating func findPeak(timer: Double) -> Bool {
@@ -39,8 +39,8 @@ extension ResultsManager {
         var validTime = false
         
         //Find peaks in range 43Hz and 172 Hz according to the data given at the end of file & in 'Constants' file
-        for i in 2...8 {
-            if (DataManager.sharedInstance.dbValues[i] > threshold) {
+        for i in frequencyIndexFor(frequency: CONSTANTS.VARIABLES.MIN_FREQUENCY)...frequencyIndexFor(frequency: CONSTANTS.VARIABLES.MAX_FREQUENCY) {
+            if (DataManager.sharedInstance.dbValues[i] > ResultsManager.threshold) {
                 if(timer > latestTimeStamp + s2Delay) {
                     gotPeak = true
                 }
@@ -177,6 +177,16 @@ extension ResultsManager {
         
         //Return variance filtered array
         return output
+    }
+    
+    
+    /// Returns the index corresponding to the respective frequency
+    ///
+    /// - Parameter frequency: Frequency
+    /// - Returns: Index
+    func frequencyIndexFor(frequency : Int) -> Int {
+        print(Int(Double(frequency)/21.5))
+        return Int(Double(frequency)/21.5)
     }
 }
 

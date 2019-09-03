@@ -52,7 +52,7 @@ class AudioManager {
         player                      = try? AKPlayer(audioFile: file!)
         player.isLooping = true
         //Initial signal Amplification
-        boost = AKBooster(AudioManager.mic, gain: 3)
+        boost = AKBooster(AudioManager.mic, gain: 8)
         
         //Add Low pass filter at 420 Hz to remove noise (giving mic as input)
         lowpass                     = AKLowPassFilter(boost)

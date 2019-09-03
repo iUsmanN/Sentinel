@@ -52,7 +52,7 @@ class AmplitudeChartBuilder {
         //Prepare dataset
         let linedataset2 = LineChartDataSet(entries: MicrophoneArray, label: "Max Frequency Amplitude")
         linedataset2.circleHoleColor = .clear
-        linedataset2.setColor(.red)
+        linedataset2.setColor(.yellow)
         linedataset2.circleRadius = 0
         linedataset2.valueTextColor = .white
         
